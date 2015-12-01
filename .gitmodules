@@ -1,0 +1,6 @@
+[submodule "vendor/lazy-line-painter"]
+	path = vendor/lazy-line-painter
+	url = https://github.com/camoconnell/lazy-line-painter.git
+[submodule "vendor/reveal.js"]
+	path = vendor/reveal.js
+	url = https://github.com/hakimel/reveal.js.git

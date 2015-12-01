@@ -1,0 +1,14 @@
+---
+layout: reveal
+link: index
+lang: en
+---
+
+{% assign posts=site.posts | where:"lang", page.lang %}
+{% for post in posts reversed %}
+<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+<script type="text/template">
+{{ post.content }}
+</script>
+</section>
+{% endfor %}

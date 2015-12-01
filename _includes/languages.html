@@ -1,0 +1,13 @@
+<aside class="controls-lang">
+    <ul class="menu">
+        <li>
+            <a href="#">Languages</a>
+            <ul>
+            {% assign pages=site.pages | where:"link", page.link | sort: 'lang' %}
+            {% for page in pages %}
+                <li><a href="{{ page.url | prepend: site.baseurl }}" class="{{ page.lang }}">{{ page.lang }}</a></li>
+            {% endfor %}
+            </ul>
+        </li>
+    </ul>
+</aside>

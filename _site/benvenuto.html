@@ -1,0 +1,364 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Jekyll Painter</title>
+
+		<!-- Lazy Line Painter -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="/jekyll-painter/vendor/reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="/jekyll-painter/vendor/reveal.js/css/theme/blood.css" id="theme">
+
+		<link rel="stylesheet" href="/jekyll-painter/css/main.css">
+
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="/jekyll-painter/vendor/reveal.js/lib/css/zenburn.css">
+
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="/jekyll-painter/js/dropit.js"></script>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '/jekyll-painter/vendor/reveal.js/css/print/pdf.css' : '/jekyll-painter/vendor/reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="/jekyll-painter/vendor/reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<aside class="controls-lang">
+    <ul class="menu">
+        <li>
+            <a href="#">Languages</a>
+            <ul>
+            
+            
+                <li><a href="/jekyll-painter/" class="en">en</a></li>
+            
+                <li><a href="/jekyll-painter/bienvenida.html" class="es">es</a></li>
+            
+                <li><a href="/jekyll-painter/accueil.html" class="fr">fr</a></li>
+            
+                <li><a href="/jekyll-painter/benvenuto.html" class="it">it</a></li>
+            
+            </ul>
+        </li>
+    </ul>
+</aside>
+
+			<aside class="modal">
+    <button id="modal" class="btn btn-custom">Modal</button>
+</aside>
+
+			<aside class="controls-anim">
+    <button class="paint btn btn-custom"><i class="fa fa-play"></i></button>
+    <button class="pause btn btn-custom"><i class="fa fa-pause"></i></button>
+    <button class="resume btn btn-custom"><i class="fa fa-plus"></i></button>
+    <button class="erase btn btn-custom"><i class="fa fa-times"></i></button>
+</aside>
+
+
+            <div class="slides">
+
+				
+
+<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+<script type="text/template">
+# Benvenuto
+
+Benvenuto in [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
+
+[jekyll]:               https://github.com/jekyll/jekyll
+[reveal.js]:            https://github.com/hakimel/reveal.js/
+[lazy-line-painter]:    https://github.com/camoconnell/lazy-line-painter
+
+</script>
+</section>
+
+<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+<script type="text/template">
+Il plugin [Markdown][markdown-plugin] permette di inserire selettori come `class`, `id` and `data` direttamente.
+Inoltre provvede sezioni inclusive.
+
+[markdown-plugin]:https://github.com/hakimel/reveal.js/tree/master/plugin/markdown
+
+</script>
+</section>
+
+<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+<script type="text/template">
+## Animazione
+
+Animazione [Lazy Line Painter][lazy-line-painter].
+
+<!-- .slide: id="pre-drawing2" class="" -->
+
+
+[lazy-line-painter]:https://github.com/camoconnell/lazy-line-painter/
+
+--
+
+<!-- .slide: id="drawing2" class="" -->
+
+<!-- .slide: data-background="#dd5567" -->
+
+
+**open** source
+
+</script>
+</section>
+
+
+
+			</div>
+		</div>
+
+		<script src="/jekyll-painter/vendor/reveal.js/lib/js/head.min.js"></script>
+		<script src="/jekyll-painter/vendor/reveal.js/js/reveal.js"></script>
+		<script>
+		// https://github.com/hakimel/reveal.js
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+
+			theme: Reveal.getQueryHash().theme,
+			transition: 'slide',
+
+			
+            mouseWheel: true,
+            
+
+			
+
+			
+
+			// Optional libraries
+			dependencies: [
+				{ src: '/jekyll-painter/vendor/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: '/jekyll-painter/vendor/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: '/jekyll-painter/vendor/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: '/jekyll-painter/vendor/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: '/jekyll-painter/vendor/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                
+				{ src: '/jekyll-painter/vendor/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                
+			]
+		});
+		</script>
+
+		<script src="/jekyll-painter/vendor/lazy-line-painter/jquery.lazylinepainter-1.7.0.min.js"></script>
+		<script>
+		// https://github.com/camoconnell/lazy-line-painter/
+		(function( $ ){
+			// Define graphics in object
+			var graphObj = {
+				'drawing': {
+			        'id': 			'#drawing',
+					'url': 			'https://rawgit.com/i5ar/19a63be7cad19573afea/raw/315eb032fd49d70e9ab22cc10965466b67216795/drawing.js',
+					'strokeWidth': 	5,
+					'strokeColor': 	'#a23'
+			    },
+				'drawing2': {
+			        'id': 			'#drawing2',
+					'url': 			'https://cdn.rawgit.com/i5ar/0c7d7fd0361bbb45df62/raw/398d3f5cb566c68939d5fa4f69c3310b3f9247d4/drawing2.js',
+					'strokeWidth': 	74,
+					'strokeColor': 	'#a23'
+			    }
+			};
+
+			var getLine =  function(action, id, url, strokeWidth, strokeColor){
+		        var $id = $(id);
+		        $.getScript( url, function() {
+		            $id.lazylinepainter({
+		                'svgData': pathObj,
+
+		                'strokeWidth': strokeWidth,
+						'strokeColor': strokeColor,
+						'strokeCap': 'butt',
+		                'strokeJoin': 'bevel',
+						'strokeOpacity': 1,
+						// 'strokeDash': '5, 10',
+
+						// 'onComplete':
+						// 'onUpdate':
+						// 'onStart':
+						// 'onStrokeStart':
+						// 'onStrokeComplete':
+
+						// 'delay':
+						// 'overrideKey':
+						'speedMultiplier': 3,
+						'drawSequential': false,
+						// 'reverse':
+						'ease': 'easeInOutQuad'
+		            });
+					$id.lazylinepainter(action);
+		        });
+
+				$(".paint").click( function(){
+					$id.lazylinepainter("paint");
+				});
+				$(".erase").click( function(){
+					$id.lazylinepainter("erase");
+				});
+				$(".pause").click( function(){
+					$id.lazylinepainter("pause");
+				});
+				$(".resume").click( function(){
+					$id.lazylinepainter("resume");
+				});
+		    }
+
+			var paintLine = function(name, action) {
+				getLine(action,
+					graphObj[name].id,
+					graphObj[name].url,
+					graphObj[name].strokeWidth,
+					graphObj[name].strokeColor
+				);
+			}
+
+			// var onHashLine = function(hash, name) {
+			// 	for (var key in graphObj) {
+			//         if (hash == '#/pre-'+ key) {
+			// 			paintLine(name, "erase");
+			// 		} else if (hash == '#/'+ key) {
+			// 			paintLine(name, "paint");
+			// 			$('.controls-anim').show();
+			//         } else {
+			// 			$('.controls-anim').hide();
+			// 		}
+			// 	}
+			// }
+
+			// var readySlugLine = function(slug) {
+			// 	setTimeout(function(){
+			// 		for (var key in graphObj) {
+			// 			if (slug === key) {
+			// 				paintLine(slug, "paint");
+			// 				$('.controls-anim').show();
+			// 			}
+			// 		}
+			// 	}, 400);
+			// }
+
+			var showAnimation = function(hash, slug, name) {
+				// Set time out to enable animation on ready function
+				setTimeout(function(){
+					for (var key in graphObj) {
+						// Set on hash change
+				        if (hash == '#/pre-'+ key) {
+							paintLine(name, "erase");
+						} else if (hash == '#/'+ key) {
+							paintLine(name, "paint");
+							$('.controls-anim').show();
+						// Set on ready function
+						} else if (slug === key) {
+								paintLine(name, "paint");
+								$('.controls-anim').show();
+				        } else {
+							$('.controls-anim').hide();
+						}
+					}
+				}, 400);
+			}
+
+			var showModal = function(hash) {
+				if (hash === "#/1") {
+					$('#modal').on('click', function() {
+						// https://api.jquery.com/jquery.get/
+						$.get( "ajax/modal.html", function( data, status ) {
+							console.log(status);
+							// Append HTML
+							$( "div.reveal" ).append( data );
+							// Link back to the slide
+							$("a.close").attr("href", hash);
+							// Remove modal windows
+							$('.close').on('click', function() {
+								$('div.overlay').remove();
+							});
+						});
+					});
+					$('.modal').show();
+				} else {
+					$('.modal').hide();
+				}
+			}
+
+			var showLang = function(slug) {
+				if (slug === "") {
+					$('.controls-lang').show();
+					// Dropit
+					$('.menu').dropit();
+				} else {
+					$('.controls-lang').hide();
+				}
+			}
+
+			// Animation ready for direct links
+		    // $(document).ready(function(){
+			// 	// Get the last segment of the URL
+	        //     var hash = location.hash;
+			// 	var slug = hash.split("/").pop();
+			// 	var name = hash.split("/").pop().split("-").pop();
+			// 	// console.log(slug);
+	        //     readySlugLine(slug);
+			// 	showModal(hash);
+			// 	showLang(name);
+		    // });
+
+		    // Animation on hash change
+		    // $(window).on('hashchange', function() {
+			// 	// Get the last segment of the URL
+		    //     var hash = location.hash;
+			// 	var slug = hash.split("/").pop();
+			// 	var name = hash.split("/").pop().split("-").pop();
+			// 	// console.log(name);
+		    //     onHashLine(hash, name);
+			// 	showModal(hash);
+			// 	showLang(name);
+		    // });
+
+			// Handle both ready function and on hashchange
+			var slideHandler = function(slug) {
+				// Get the last segment of the URL
+		        var hash = location.hash;
+				var slug = hash.split("/").pop();
+				var name = hash.split("/").pop().split("-").pop();
+		        showAnimation(hash, slug, name);
+				showModal(hash);
+				showLang(name);
+			}
+
+			$(document).ready(slideHandler);
+			$(window).on('hashchange', slideHandler);
+
+		})( jQuery );
+		</script>
+	</body>
+</html>

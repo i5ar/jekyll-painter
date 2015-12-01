@@ -1,0 +1,33 @@
+# Presentation title
+title:
+    en: Jekyll Painter
+    it: Jekyll Painter
+    fr: Jekyll Painter
+    es: Jekyll Painter
+
+index:
+    en: index.html
+    it: benvenuto.html
+    fr: accueil.html
+    es: bienvenida.html
+
+baseurl: /jekyll-painter
+url: http://i5ar.github.io
+
+# Lazy Line Painter subdirectory
+lazylinepainter_path: /vendor/lazy-line-painter
+
+# Reveal.js subdirectory
+reveal_path: /vendor/reveal.js
+
+# Embed Server-side speaker notes
+reveal_notes_server: false
+
+# Additional Reveal.js options
+reveal_mouse_wheel: true
+reveal_transition_speed: false
+reveal_slide_number: false
+
+# Additional Jekyll options
+markdown: redcarpet
+markdown_ext: ignoreme
