@@ -222,14 +222,14 @@
 			}
 
 			var getSlideID = function() {
-				var $hasNestedSlide = $( "section.present" ).has( "section" ).length;
+				var $hasNestedSlide = $("section.present").has("section").length;
 				if ($hasNestedSlide){
 					// Get nested slide ID
-					var currentSlideID = $("section section.present").attr('id');
+					var currentSlideID = $("section section.present").attr("id");
 					// console.log(currentSlideID);
 				} else {
 					// Get free slide ID
-					var currentSlideID = $("section.present").attr('id');
+					var currentSlideID = $("section.present").attr("id");
 					// console.log(currentSlideID);
 				}
 				return currentSlideID;
@@ -240,31 +240,31 @@
 				if (hash === "#/" + myID) {
 					// https://api.jquery.com/jquery.ajax/
 					$.ajax({
-					    url: 'ajax/modal-' + myID +'.html',
+					    url: "ajax/modal-" + myID +".html",
 						// context: document.body,
 					    success: function() {
 							// Show button
-							$('.modal').show();
+							$(".modal").show();
 					    },
 					    error: function() {
-							alert('ID found, page not found.');
+							alert("ID found, page not found.");
 					    }
 					}).done(function(data, status) {
-						$('#modal').on('click', function() {
+						$("#modal").on("click", function() {
 							console.log(data);
 							// Append HTML
-							$( "div.reveal" ).append( data );
+							$("div.reveal").append(data);
 							// Link back to the slide
 							$("a.close").attr("href", hash);
 							// Remove modal windows
-							$('.close').on('click', function() {
-								$('div.overlay').remove();
+							$(".close").on("click", function() {
+								$("div.overlay").remove();
 							});
 						});
 					});
 				} else {
 					// Hide button
-					$('.modal').hide();
+					$(".modal").hide();
 				}
 			}
 
