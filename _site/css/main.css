@@ -106,6 +106,16 @@ mark {
 /**
  * Dropit
  */
+/**
+ * Ribbon
+ */
+#ribbon img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  z-index: 9; }
+
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.

@@ -47,6 +47,8 @@
 
 	<body>
 
+		<a href="#" id="ribbon"><img src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+
 		<div class="reveal">
 
 			<aside class="controls-lang">
@@ -288,12 +290,37 @@ Animazione [Lazy Line Painter][lazy-line-painter].
 				}, 400);
 			}
 
+			var getSlideID = function() {
+				var $hasNestedSlide = $( "section.present" ).has( "section" ).length;
+				if ($hasNestedSlide){
+					// Get nested slide ID
+					var currentSlideID = $("section section.present").attr('id');
+					// console.log(currentSlideID);
+				} else {
+					// Get free slide ID
+					var currentSlideID = $("section.present").attr('id');
+					// console.log(currentSlideID);
+				}
+				return currentSlideID;
+			}
+
 			var showModal = function(hash) {
-				if (hash === "#/1") {
-					$('#modal').on('click', function() {
-						// https://api.jquery.com/jquery.get/
-						$.get( "ajax/modal.html", function( data, status ) {
-							console.log(status);
+				var myID = getSlideID();
+				if (hash === "#/" + myID) {
+					// https://api.jquery.com/jquery.ajax/
+					$.ajax({
+					    url: 'ajax/modal-' + myID +'.html',
+						// context: document.body,
+					    success: function() {
+							// Show button
+							$('.modal').show();
+					    },
+					    error: function() {
+							alert('ID found, page not found.');
+					    }
+					}).done(function(data, status) {
+						$('#modal').on('click', function() {
+							console.log(data);
 							// Append HTML
 							$( "div.reveal" ).append( data );
 							// Link back to the slide
@@ -304,8 +331,8 @@ Animazione [Lazy Line Painter][lazy-line-painter].
 							});
 						});
 					});
-					$('.modal').show();
 				} else {
+					// Hide button
 					$('.modal').hide();
 				}
 			}
@@ -344,12 +371,14 @@ Animazione [Lazy Line Painter][lazy-line-painter].
 			// 	showLang(name);
 		    // });
 
+
 			// Handle both ready function and on hashchange
 			var slideHandler = function(slug) {
 				// Get the last segment of the URL
 		        var hash = location.hash;
 				var slug = hash.split("/").pop();
 				var name = hash.split("/").pop().split("-").pop();
+				// getSlideID();
 		        showAnimation(hash, slug, name);
 				showModal(hash);
 				showLang(name);

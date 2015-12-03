@@ -112,9 +112,6 @@
             text-decoration: none;
         }
     }
-
-
-
 }
 
 /**
@@ -165,3 +162,15 @@
 //     color: #fff;
 //     text-decoration: none;
 // }
+
+/**
+ * Ribbon
+ */
+// Fork ribbon
+#ribbon img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    z-index: 9;
+}
