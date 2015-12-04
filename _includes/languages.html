@@ -1,11 +1,11 @@
 <aside class="controls-lang">
     <ul class="menu">
         <li>
-            <a href="#">Languages</a>
+            <a href="#"><b>{{ "Languages" | upcase }}</b></a>
             <ul>
             {% assign pages=site.pages | where:"link", page.link | sort: 'lang' %}
             {% for page in pages %}
-                <li><a href="{{ page.url | prepend: site.baseurl }}" class="{{ page.lang }}">{{ page.lang }}</a></li>
+                <li><a href="{{ page.url | prepend: site.baseurl }}" class="{{ page.lang }}">{{ page.lang | upcase }}</a></li>
             {% endfor %}
             </ul>
         </li>

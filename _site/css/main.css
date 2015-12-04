@@ -54,13 +54,13 @@ mark {
   left: 20px; }
 .reveal .controls-lang {
   position: absolute;
-  margin: 5px;
+  margin: 10px 0;
   display: none;
   z-index: 9;
-  right: 1em;
-  font-size: 0.75em; }
-  .reveal .controls-lang .dropit-trigger {
-    list-style-type: none; }
+  left: 20px;
+  font-size: 0.6em; }
+  .reveal .controls-lang ul {
+    list-style-type: square; }
 .reveal .modal {
   position: absolute;
   margin: 5px;

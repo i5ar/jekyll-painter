@@ -54,17 +54,17 @@
 			<aside class="controls-lang">
     <ul class="menu">
         <li>
-            <a href="#">Languages</a>
+            <a href="#"><b>LANGUAGES</b></a>
             <ul>
             
             
-                <li><a href="/jekyll-painter/" class="en">en</a></li>
+                <li><a href="/jekyll-painter/" class="en">EN</a></li>
             
-                <li><a href="/jekyll-painter/bienvenida.html" class="es">es</a></li>
+                <li><a href="/jekyll-painter/bienvenida.html" class="es">ES</a></li>
             
-                <li><a href="/jekyll-painter/accueil.html" class="fr">fr</a></li>
+                <li><a href="/jekyll-painter/accueil.html" class="fr">FR</a></li>
             
-                <li><a href="/jekyll-painter/benvenuto.html" class="it">it</a></li>
+                <li><a href="/jekyll-painter/benvenuto.html" class="it">IT</a></li>
             
             </ul>
         </li>
@@ -212,30 +212,6 @@ Bienvenu in [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
 				);
 			}
 
-			// var onHashLine = function(hash, name) {
-			// 	for (var key in graphObj) {
-			//         if (hash == '#/pre-'+ key) {
-			// 			paintLine(name, "erase");
-			// 		} else if (hash == '#/'+ key) {
-			// 			paintLine(name, "paint");
-			// 			$('.controls-anim').show();
-			//         } else {
-			// 			$('.controls-anim').hide();
-			// 		}
-			// 	}
-			// }
-
-			// var readySlugLine = function(slug) {
-			// 	setTimeout(function(){
-			// 		for (var key in graphObj) {
-			// 			if (slug === key) {
-			// 				paintLine(slug, "paint");
-			// 				$('.controls-anim').show();
-			// 			}
-			// 		}
-			// 	}, 400);
-			// }
-
 			var showAnimation = function(hash, slug, name) {
 				// Set time out to enable animation on ready function
 				setTimeout(function(){
@@ -272,11 +248,11 @@ Bienvenu in [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
 			}
 
 			var showModal = function(hash) {
-				var myID = getSlideID();
-				if (hash === "#/" + myID) {
+				var currentSlideID = getSlideID();
+				if (hash === "#/" + currentSlideID) {
 					// https://api.jquery.com/jquery.ajax/
 					$.ajax({
-					    url: "ajax/modal-" + myID +".html",
+					    url: "ajax/modal-" + currentSlideID + ".html",
 						// context: document.body,
 					    success: function() {
 							// Show button
@@ -313,31 +289,6 @@ Bienvenu in [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
 					$('.controls-lang').hide();
 				}
 			}
-
-			// Animation ready for direct links
-		    // $(document).ready(function(){
-			// 	// Get the last segment of the URL
-	        //     var hash = location.hash;
-			// 	var slug = hash.split("/").pop();
-			// 	var name = hash.split("/").pop().split("-").pop();
-			// 	// console.log(slug);
-	        //     readySlugLine(slug);
-			// 	showModal(hash);
-			// 	showLang(name);
-		    // });
-
-		    // Animation on hash change
-		    // $(window).on('hashchange', function() {
-			// 	// Get the last segment of the URL
-		    //     var hash = location.hash;
-			// 	var slug = hash.split("/").pop();
-			// 	var name = hash.split("/").pop().split("-").pop();
-			// 	// console.log(name);
-		    //     onHashLine(hash, name);
-			// 	showModal(hash);
-			// 	showLang(name);
-		    // });
-
 
 			// Handle both ready function and on hashchange
 			var slideHandler = function(slug) {

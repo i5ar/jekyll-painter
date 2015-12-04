@@ -68,17 +68,16 @@
         z-index: 9;
         bottom: 45px;
         left: 20px;
-
     }
     .controls-lang {
         position:absolute;
-        margin: 5px;
+        margin: 10px 0;
         display: none;
         z-index:9;
-        right: 1em;
-        font-size: 0.75em;
-        .dropit-trigger {
-            list-style-type: none;
+        left: 20px;
+        font-size: 0.6em;
+        ul {
+            list-style-type: square;
         }
     }
     .modal {
