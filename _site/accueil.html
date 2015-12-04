@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="fr">
 
 	<head>
 		<meta charset="utf-8">
@@ -29,7 +29,6 @@
 		<link rel="stylesheet" href="/jekyll-painter/vendor/reveal.js/lib/css/zenburn.css">
 
 		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-		<script src="/jekyll-painter/js/dropit.js"></script>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -47,29 +46,40 @@
 
 	<body>
 
-		<a href="#" id="ribbon"><img src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+		<a href="https://github.com/i5ar/jekyll-painter" id="ribbon"><img src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
 
 		<div class="reveal">
 
-			<aside class="controls-lang">
-    <ul class="menu">
-        <li>
-            <a href="#"><b>LANGUAGES</b></a>
-            <ul>
-            
-            
+			<aside class="lang">
+    <div class="wrapper-lang">
+        <div id="dd" class="wrapper-dropdown-lang btn btn-custom">
+            <span></span>
+            <ul class="dropdown">
+                
+                
                 <li><a href="/jekyll-painter/" class="en">EN</a></li>
-            
+                
                 <li><a href="/jekyll-painter/bienvenida.html" class="es">ES</a></li>
-            
+                
                 <li><a href="/jekyll-painter/accueil.html" class="fr">FR</a></li>
-            
+                
                 <li><a href="/jekyll-painter/benvenuto.html" class="it">IT</a></li>
-            
+                
+                <li><a href="https://github.com/i5ar/jekyll-painter">Add</a></li>
             </ul>
-        </li>
-    </ul>
+        </div>
+    </div>
 </aside>
+
+<script type="text/javascript">
+$( document ).ready(function() {
+    var $lang = $("html").attr("lang");
+    $('#dd span').append($lang.toUpperCase());
+    $('#dd').on('click', function(event){
+        $(this).toggleClass('active');
+    });
+});
+</script>
 
 			<aside class="modal">
     <button id="modal" class="btn btn-custom">Modal</button>
@@ -249,10 +259,10 @@ Bienvenu in [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
 
 			var showModal = function(hash) {
 				var currentSlideID = getSlideID();
-				if (hash === "#/" + currentSlideID) {
+				if (hash === "#/"+ currentSlideID) {
 					// https://api.jquery.com/jquery.ajax/
 					$.ajax({
-					    url: "ajax/modal-" + currentSlideID + ".html",
+					    url: "ajax/modal-"+ currentSlideID +".html",
 						// context: document.body,
 					    success: function() {
 							// Show button
@@ -282,11 +292,9 @@ Bienvenu in [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
 
 			var showLang = function(slug) {
 				if (slug === "") {
-					$('.controls-lang').show();
-					// Dropit
-					$('.menu').dropit();
+					$('.lang').show();
 				} else {
-					$('.controls-lang').hide();
+					$('.lang').hide();
 				}
 			}
 

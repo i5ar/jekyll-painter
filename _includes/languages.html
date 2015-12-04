@@ -1,13 +1,24 @@
-<aside class="controls-lang">
-    <ul class="menu">
-        <li>
-            <a href="#"><b>{{ "Languages" | upcase }}</b></a>
-            <ul>
-            {% assign pages=site.pages | where:"link", page.link | sort: 'lang' %}
-            {% for page in pages %}
+<aside class="lang">
+    <div class="wrapper-lang">
+        <div id="dd" class="wrapper-dropdown-lang btn btn-custom">
+            <span></span>
+            <ul class="dropdown">
+                {% assign pages=site.pages | where:"link", page.link | sort: 'lang' %}
+                {% for page in pages %}
                 <li><a href="{{ page.url | prepend: site.baseurl }}" class="{{ page.lang }}">{{ page.lang | upcase }}</a></li>
-            {% endfor %}
+                {% endfor %}
+                <li><a href="https://github.com/i5ar/jekyll-painter">Add</a></li>
             </ul>
-        </li>
-    </ul>
+        </div>
+    </div>
 </aside>
+
+<script type="text/javascript">
+$( document ).ready(function() {
+    var $lang = $("html").attr("lang");
+    $('#dd span').append($lang.toUpperCase());
+    $('#dd').on('click', function(event){
+        $(this).toggleClass('active');
+    });
+});
+</script>

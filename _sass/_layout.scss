@@ -58,9 +58,6 @@
             margin: auto;
         }
     }
-    .progress {
-        height: 10px;
-    }
     .controls-anim {
         position: absolute;
         margin: 5px;
@@ -69,11 +66,12 @@
         bottom: 45px;
         left: 20px;
     }
-    .controls-lang {
+    .lang {
         position:absolute;
         margin: 10px 0;
         display: none;
         z-index:9;
+        top: 20px;
         left: 20px;
         font-size: 0.6em;
         ul {
@@ -102,6 +100,10 @@
     }
     .overlay.overlay-modal .viewport .viewport-inner .title {
         font-size: 20px;
+    }
+    // Progress bar
+    .progress {
+        height: 10px;
     }
     // Buttons
     .btn {
@@ -132,35 +134,6 @@
   background-color: #a23;
   border-color: #a23;
 }
-/**
- * Dropit
- */
-// Custom Dropit list
-// .menu ul { display: none; } /* Hide before plugin loads */
-// .menu ul.dropit-submenu {
-//     background-color: #fff;
-    // border: 1px solid #b2b2b2;
-    // padding: 6px 0;
-    // margin: 3px 0 0 1px;
-    // -webkit-border-radius: 3px;
-    //    -moz-border-radius: 3px;
-    //         border-radius: 3px;
-    // -webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
-    //    -moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
-    //         box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
-// }
-// .menu ul.dropit-submenu a {
-//     display: block;
-//     font-size: 14px;
-//     line-height: 25px;
-//     color: #7a868e;
-//     padding: 0 18px;
-// }
-// .menu ul.dropit-submenu a:hover {
-//     background: #a23;
-//     color: #fff;
-//     text-decoration: none;
-// }
 
 /**
  * Ribbon
@@ -172,4 +145,75 @@
     right: 0;
     border: 0;
     z-index: 9;
+}
+
+/**
+ * Dropdown
+ */
+// Global
+.wrapper-lang {
+    *zoom: 1;
+    &:after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+    .wrapper-dropdown-lang {
+        position: relative;     // Enable absolute positionning for children and pseudo elements
+        width: 100%;
+        padding: 6px 12px !important;
+        margin: 0 auto;
+        background: #eee;
+        color: #000;
+        outline: none;
+        cursor: pointer;
+        // Custom
+        font-size: 14px;
+        line-height: 22px;
+        &:after {
+            content: "";
+            width: 0;
+            height: 0;
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            margin-top: -6px;
+            border-width: 6px 0 6px 6px;
+            border-style: solid;
+            border-color: transparent #fff;
+        }
+        span {
+            padding-right: 1em;
+        }
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 100%;
+            background: #fff;
+            list-style: none;
+            opacity: 0;             // Hiding
+            pointer-events: none;   // Hiding
+            li a {
+                display: block;
+                text-decoration: none;
+                color: #000;
+                padding: 6px 12px;
+            }
+            // Hover state
+            li:hover a {
+                background: $brand-color;
+            }
+        }
+        // Active state
+        &.active .dropdown {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        &.active:after {
+            border-color: $brand-color-pale transparent;
+            border-width: 6px 6px 0 6px ;
+            margin-top: -3px;
+        }
+    }
 }

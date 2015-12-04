@@ -43,8 +43,6 @@ mark {
     left: 0;
     right: 0;
     margin: auto; }
-.reveal .progress {
-  height: 10px; }
 .reveal .controls-anim {
   position: absolute;
   margin: 5px;
@@ -52,14 +50,15 @@ mark {
   z-index: 9;
   bottom: 45px;
   left: 20px; }
-.reveal .controls-lang {
+.reveal .lang {
   position: absolute;
   margin: 10px 0;
   display: none;
   z-index: 9;
+  top: 20px;
   left: 20px;
   font-size: 0.6em; }
-  .reveal .controls-lang ul {
+  .reveal .lang ul {
     list-style-type: square; }
 .reveal .modal {
   position: absolute;
@@ -79,6 +78,8 @@ mark {
   letter-spacing: normal; }
 .reveal .overlay.overlay-modal .viewport .viewport-inner .title {
   font-size: 20px; }
+.reveal .progress {
+  height: 10px; }
 .reveal .btn {
   border-radius: 0; }
   .reveal .btn:hover, .reveal .btn:focus, .reveal .btn .focus {
@@ -104,9 +105,6 @@ mark {
   border-color: #a23; }
 
 /**
- * Dropit
- */
-/**
  * Ribbon
  */
 #ribbon img {
@@ -115,6 +113,63 @@ mark {
   right: 0;
   border: 0;
   z-index: 9; }
+
+/**
+ * Dropdown
+ */
+.wrapper-lang {
+  *zoom: 1; }
+  .wrapper-lang:after {
+    clear: both;
+    content: "";
+    display: table; }
+  .wrapper-lang .wrapper-dropdown-lang {
+    position: relative;
+    width: 100%;
+    padding: 6px 12px !important;
+    margin: 0 auto;
+    background: #eee;
+    color: #000;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 22px; }
+    .wrapper-lang .wrapper-dropdown-lang:after {
+      content: "";
+      width: 0;
+      height: 0;
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      margin-top: -6px;
+      border-width: 6px 0 6px 6px;
+      border-style: solid;
+      border-color: transparent #fff; }
+    .wrapper-lang .wrapper-dropdown-lang span {
+      padding-right: 1em; }
+    .wrapper-lang .wrapper-dropdown-lang .dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 100%;
+      background: #fff;
+      list-style: none;
+      opacity: 0;
+      pointer-events: none; }
+      .wrapper-lang .wrapper-dropdown-lang .dropdown li a {
+        display: block;
+        text-decoration: none;
+        color: #000;
+        padding: 6px 12px; }
+      .wrapper-lang .wrapper-dropdown-lang .dropdown li:hover a {
+        background: #a23; }
+    .wrapper-lang .wrapper-dropdown-lang.active .dropdown {
+      opacity: 1;
+      pointer-events: auto; }
+    .wrapper-lang .wrapper-dropdown-lang.active:after {
+      border-color: #dd5567 transparent;
+      border-width: 6px 6px 0 6px;
+      margin-top: -3px; }
 
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
@@ -774,35 +829,3 @@ input[type="button"].btn-block {
 
 .affix {
   position: fixed; }
-
-/*
- * Dropit v1.1.0
- * http://dev7studios.com/dropit
- *
- * Copyright 2012, Dev7studios
- * Free to use and abuse under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
- */
-/* These styles assume you are using ul and li */
-.dropit {
-  list-style: none;
-  padding: 0;
-  margin: 0; }
-
-.dropit .dropit-trigger {
-  position: relative; }
-
-.dropit .dropit-submenu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  /* dropdown left or right */
-  z-index: 1000;
-  display: none;
-  min-width: 150px;
-  list-style: none;
-  padding: 0;
-  margin: 0; }
-
-.dropit .dropit-open .dropit-submenu {
-  display: block; }
