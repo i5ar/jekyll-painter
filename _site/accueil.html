@@ -125,6 +125,9 @@ Bienvenu in [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
 			history: true,
 			center: true,
 
+			// Enable keyboard shortcuts
+			keyboard: true,
+
 			theme: Reveal.getQueryHash().theme,
 			transition: 'slide',
 
@@ -148,6 +151,35 @@ Bienvenu in [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
                 
 			]
 		});
+
+		// TODO: Button to pause the video
+		setTimeout(function(){
+			// https://github.com/hakimel/reveal.js#keyboard-bindings
+			Reveal.configure({
+				keyboard: {
+					// Go to the next slide when the `Enter` key is pressed
+					13: "next",
+					// Pause video when `Space` bar is pressed
+					32: function () {
+						// Add `action-video` class to each `video` tag
+						$( ".slide-background video" ).each(function() {
+							$( this ).attr("class", "action-video");
+						});
+						// Use each `action-video` class
+						$( ".action-video" ).each(function() {
+							var video = $(this);
+							// The `play()` is a function of the DOM element so the jQuery equivalent would be `get(0).play()`
+							// http://stackoverflow.com/questions/4646998/play-pause-html-5-video-using-jquery
+							if (video.get(0).paused == true) {
+								video.get(0).play();
+							} else {
+								video.get(0).pause();
+							}
+						});
+					}
+				}
+			});
+		}, 400);
 		</script>
 
 		<script src="/jekyll-painter/vendor/lazy-line-painter/jquery.lazylinepainter-1.7.0.min.js"></script>

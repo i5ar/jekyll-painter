@@ -15,7 +15,3 @@ Animazione [Lazy Line Painter][lazy-line-painter].
 
 
 **open** source
-
---
-
-## Test

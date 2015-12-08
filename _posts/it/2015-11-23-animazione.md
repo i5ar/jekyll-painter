@@ -17,7 +17,3 @@ Animazione [Lazy Line Painter][lazy-line-painter].
 {% include background.html background="#dd5567" %}
 
 **open** source
-
---
-
-## Test

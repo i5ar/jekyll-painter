@@ -4,7 +4,11 @@ A [Jekyll][jekyllrb] theme for creating [Reveal.js][reveal.js] presentation alon
 
 ## TODO
 
-- Add languages modal `g` key.
+- Add languages modal `£` key;
+- Add custom modal `!` key;
+- Customize arrows;
+- Add modal layout;
+- Short includes.
 
 [jekyllrb]:             http://jekyllrb.com/
 [reveal.js]:            https://github.com/hakimel/reveal.js/
