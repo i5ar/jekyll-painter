@@ -66,19 +66,7 @@
         bottom: 45px;
         left: 20px;
     }
-    .lang {
-        position:absolute;
-        margin: 10px 0;
-        display: none;
-        z-index:9;
-        top: 20px;
-        left: 20px;
-        font-size: 0.6em;
-        ul {
-            list-style-type: square;
-        }
-    }
-    .modal {
+    .wrapper-modal {
         position: absolute;
         margin: 5px;
         display: none;
@@ -152,6 +140,13 @@
  */
 // Global
 .wrapper-lang {
+    position:absolute;
+    margin: 10px 0;
+    display: none;
+    z-index:9;
+    top: 20px;
+    left: 20px;
+    font-size: 0.6em;
     *zoom: 1;
     &:after {
         clear: both;
@@ -186,6 +181,7 @@
             padding-right: 1em;
         }
         .dropdown {
+            list-style-type: square;
             position: absolute;
             top: 100%;
             right: 0;

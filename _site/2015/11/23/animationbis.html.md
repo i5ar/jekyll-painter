@@ -1,15 +1,15 @@
-## Animation
+## Animation Bis
 
 [Lazy Line Painter][lazy-line-painter] animations.
 
-<!-- .slide: id="pre-drawing2" class="load" -->
+<!-- .slide: id="pre-drawing" class="load" -->
 
 
 [lazy-line-painter]:https://github.com/camoconnell/lazy-line-painter/
 
 --
 
-<!-- .slide: id="drawing2" class="modal fire" -->
+<!-- .slide: id="drawing" class="modal fire" -->
 
 <!-- .slide: data-background="#dd5567" -->
 

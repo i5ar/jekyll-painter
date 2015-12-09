@@ -50,38 +50,36 @@
 
 		<div class="reveal">
 
-			<aside class="lang">
-    <div class="wrapper-lang">
-        <div id="dd" class="wrapper-dropdown-lang btn btn-custom">
-            <span></span>
-            <ul class="dropdown">
-                
-                
-                <li><a href="/jekyll-painter/" class="en">EN</a></li>
-                
-                <li><a href="/jekyll-painter/bienvenida.html" class="es">ES</a></li>
-                
-                <li><a href="/jekyll-painter/accueil.html" class="fr">FR</a></li>
-                
-                <li><a href="/jekyll-painter/benvenuto.html" class="it">IT</a></li>
-                
-                <li><a href="https://github.com/i5ar/jekyll-painter">Add</a></li>
-            </ul>
-        </div>
+			<aside class="wrapper-lang">
+    <div id="dropdown-lang" class="wrapper-dropdown-lang btn btn-custom">
+        <span></span>
+        <ul class="dropdown">
+            
+            
+            <li><a href="/jekyll-painter/" class="en">EN</a></li>
+            
+            <li><a href="/jekyll-painter/bienvenida.html" class="es">ES</a></li>
+            
+            <li><a href="/jekyll-painter/accueil.html" class="fr">FR</a></li>
+            
+            <li><a href="/jekyll-painter/benvenuto.html" class="it">IT</a></li>
+            
+            <li><a href="https://github.com/i5ar/jekyll-painter">Add</a></li>
+        </ul>
     </div>
 </aside>
 
 <script type="text/javascript">
 $( document ).ready(function() {
     var $lang = $("html").attr("lang");
-    $('#dd span').append($lang.toUpperCase());
-    $('#dd').on('click', function(event){
+    $('#dropdown-lang span').append($lang.toUpperCase());
+    $('#dropdown-lang').on('click', function(event){
         $(this).toggleClass('active');
     });
 });
 </script>
 
-			<aside class="modal">
+			<aside class="wrapper-modal">
     <button id="modal" class="btn btn-custom">Modal</button>
 </aside>
 
@@ -114,7 +112,6 @@ Bienvenu in [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
 
 			</div>
 		</div>
-
 		<script src="/jekyll-painter/vendor/reveal.js/lib/js/head.min.js"></script>
 		<script src="/jekyll-painter/vendor/reveal.js/js/reveal.js"></script>
 		<script>
@@ -149,37 +146,35 @@ Bienvenu in [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
                 
 				{ src: '/jekyll-painter/vendor/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
                 
-			]
+			],
 		});
 
-		// TODO: Button to pause the video
-		setTimeout(function(){
-			// https://github.com/hakimel/reveal.js#keyboard-bindings
-			Reveal.configure({
-				keyboard: {
-					// Go to the next slide when the `Enter` key is pressed
-					13: "next",
-					// Pause video when `Space` bar is pressed
-					32: function () {
-						// Add `action-video` class to each `video` tag
-						$( ".slide-background video" ).each(function() {
-							$( this ).attr("class", "action-video");
-						});
-						// Use each `action-video` class
-						$( ".action-video" ).each(function() {
-							var video = $(this);
-							// The `play()` is a function of the DOM element so the jQuery equivalent would be `get(0).play()`
-							// http://stackoverflow.com/questions/4646998/play-pause-html-5-video-using-jquery
-							if (video.get(0).paused == true) {
-								video.get(0).play();
-							} else {
-								video.get(0).pause();
-							}
-						});
-					}
+		// FIXME: Uncaught TypeError: Cannot read property 'style' of undefined
+		// https://github.com/hakimel/reveal.js#keyboard-bindings
+		Reveal.configure({
+			keyboard: {
+				// Go to the next slide when the `Enter` key is pressed
+				13: "next",
+				// Pause video when `Space` bar is pressed
+				32: function () {
+					// Add `action-video` class to each `video` tag
+					$( ".slide-background video" ).each(function() {
+						$( this ).attr("class", "action-video");
+					});
+					// Use each `action-video` class
+					$( ".action-video" ).each(function() {
+						var video = $(this);
+						// The `play()` is a function of the DOM element so the jQuery equivalent would be `get(0).play()`
+						// http://stackoverflow.com/questions/4646998/play-pause-html-5-video-using-jquery
+						if (video.get(0).paused == true) {
+							video.get(0).play();
+						} else {
+							video.get(0).pause();
+						}
+					});
 				}
-			});
-		}, 400);
+			}
+		});
 		</script>
 
 		<script src="/jekyll-painter/vendor/lazy-line-painter/jquery.lazylinepainter-1.7.0.min.js"></script>
@@ -189,21 +184,21 @@ Bienvenu in [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
 			// Define graphics in object
 			var graphObj = {
 				'drawing': {
-			        'id': 			'#drawing',
 					'url': 			'https://rawgit.com/i5ar/19a63be7cad19573afea/raw/315eb032fd49d70e9ab22cc10965466b67216795/drawing.js',
+					'hashName': 	'#drawing',
 					'strokeWidth': 	5,
 					'strokeColor': 	'#a23'
 			    },
 				'drawing2': {
-			        'id': 			'#drawing2',
-					'url': 			'https://cdn.rawgit.com/i5ar/0c7d7fd0361bbb45df62/raw/398d3f5cb566c68939d5fa4f69c3310b3f9247d4/drawing2.js',
+					'url': 			'https://rawgit.com/i5ar/0c7d7fd0361bbb45df62/raw/398d3f5cb566c68939d5fa4f69c3310b3f9247d4/drawing2.js',
+					'hashName': 	'#drawing2',
 					'strokeWidth': 	74,
 					'strokeColor': 	'#a23'
 			    }
 			};
 
-			var getLine =  function(action, id, url, strokeWidth, strokeColor){
-		        var $id = $(id);
+			var getLine =  function(action, url, hashName, strokeWidth, strokeColor){
+		        var $id = $(hashName);
 		        $.getScript( url, function() {
 		            $id.lazylinepainter({
 		                'svgData': pathObj,
@@ -245,71 +240,47 @@ Bienvenu in [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
 				});
 		    }
 
-			var paintLine = function(name, action) {
+			var setLine = function(id, action) {
 				getLine(action,
-					graphObj[name].id,
-					graphObj[name].url,
-					graphObj[name].strokeWidth,
-					graphObj[name].strokeColor
+					graphObj[id].url,
+					graphObj[id].hashName,
+					graphObj[id].strokeWidth,
+					graphObj[id].strokeColor
 				);
 			}
 
-			var showAnimation = function(hash, slug, name) {
-				// Set time out to enable animation on ready function
-				setTimeout(function(){
-					for (var key in graphObj) {
-						// Set on hash change
-				        if (hash == '#/pre-'+ key) {
-							paintLine(name, "erase");
-						} else if (hash == '#/'+ key) {
-							paintLine(name, "paint");
-							$('.controls-anim').show();
-						// Set on ready function
-						} else if (slug === key) {
-								paintLine(name, "paint");
-								$('.controls-anim').show();
-				        } else {
-							$('.controls-anim').hide();
-						}
+			var getAnimation = function(id, className, nextSlide) {
+				for (var key in graphObj) {
+					if (key == nextSlide.id && className.indexOf("load") >= 0) {
+						setLine(key, "erase");
+					} else if (key == id && className.indexOf("fire") >= 0) {
+						setLine(key, "paint");
+						$('.controls-anim').show();
+			        } else {
+						$('.controls-anim').hide();
 					}
-				}, 400);
-			}
-
-			var getSlideID = function() {
-				var $hasNestedSlide = $("section.present").has("section").length;
-				if ($hasNestedSlide){
-					// Get nested slide ID
-					var currentSlideID = $("section section.present").attr("id");
-					// console.log(currentSlideID);
-				} else {
-					// Get free slide ID
-					var currentSlideID = $("section.present").attr("id");
-					// console.log(currentSlideID);
 				}
-				return currentSlideID;
 			}
 
-			var showModal = function(hash) {
-				var currentSlideID = getSlideID();
-				if (hash === "#/"+ currentSlideID) {
+			var getModal = function(id, className) {
+				// Check presence of "modal" classname
+				if (className.indexOf("modal") >= 0) {
 					// https://api.jquery.com/jquery.ajax/
 					$.ajax({
-					    url: "ajax/modal-"+ currentSlideID +".html",
-						// context: document.body,
+					    url: "ajax/"+ id +".html",
 					    success: function() {
 							// Show button
-							$(".modal").show();
+							$(".wrapper-modal").show();
 					    },
 					    error: function() {
 							alert("ID found, page not found.");
-					    }
+						}
 					}).done(function(data, status) {
 						$("#modal").on("click", function() {
-							console.log(data);
 							// Append HTML
 							$("div.reveal").append(data);
 							// Link back to the slide
-							$("a.close").attr("href", hash);
+							$("a.close").attr("href", "#/"+ id);
 							// Remove modal windows
 							$(".close").on("click", function() {
 								$("div.overlay").remove();
@@ -318,33 +289,32 @@ Bienvenu in [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
 					});
 				} else {
 					// Hide button
-					$(".modal").hide();
+					$(".wrapper-modal").hide();
 				}
 			}
 
-			var showLang = function(slug) {
-				if (slug === "") {
-					$('.lang').show();
+			var getLang = function(className) {
+				if (className.indexOf("lang") >= 0) {
+					$('.wrapper-lang').show();
 				} else {
-					$('.lang').hide();
+					$('.wrapper-lang').hide();
 				}
 			}
 
-			// Handle both ready function and on hashchange
-			var slideHandler = function(slug) {
-				// Get the last segment of the URL
-		        var hash = location.hash;
-				var slug = hash.split("/").pop();
-				var name = hash.split("/").pop().split("-").pop();
-				// getSlideID();
-		        showAnimation(hash, slug, name);
-				showModal(hash);
-				showLang(name);
-			}
-
-			$(document).ready(slideHandler);
-			$(window).on('hashchange', slideHandler);
-
+			// https://github.com/hakimel/reveal.js#slide-changed-event
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				var id = event.currentSlide.id;
+				var className = event.currentSlide.className;
+				var dataName = event.currentSlide.getAttribute( 'data-name' );
+				if( event.currentSlide.nextElementSibling ) {
+					var nextSlide = event.currentSlide.nextElementSibling;
+				} else {
+					var nextSlide = false;
+				}
+				getLang(className);
+				getModal(id, className);
+				getAnimation(id, className, nextSlide);
+			});
 		})( jQuery );
 		</script>
 	</body>

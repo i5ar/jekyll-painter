@@ -50,17 +50,7 @@ mark {
   z-index: 9;
   bottom: 45px;
   left: 20px; }
-.reveal .lang {
-  position: absolute;
-  margin: 10px 0;
-  display: none;
-  z-index: 9;
-  top: 20px;
-  left: 20px;
-  font-size: 0.6em; }
-  .reveal .lang ul {
-    list-style-type: square; }
-.reveal .modal {
+.reveal .wrapper-modal {
   position: absolute;
   margin: 5px;
   display: none;
@@ -118,6 +108,13 @@ mark {
  * Dropdown
  */
 .wrapper-lang {
+  position: absolute;
+  margin: 10px 0;
+  display: none;
+  z-index: 9;
+  top: 20px;
+  left: 20px;
+  font-size: 0.6em;
   *zoom: 1; }
   .wrapper-lang:after {
     clear: both;
@@ -148,6 +145,7 @@ mark {
     .wrapper-lang .wrapper-dropdown-lang span {
       padding-right: 1em; }
     .wrapper-lang .wrapper-dropdown-lang .dropdown {
+      list-style-type: square;
       position: absolute;
       top: 100%;
       right: 0;

@@ -1,23 +1,21 @@
-<aside class="lang">
-    <div class="wrapper-lang">
-        <div id="dd" class="wrapper-dropdown-lang btn btn-custom">
-            <span></span>
-            <ul class="dropdown">
-                {% assign pages=site.pages | where:"link", page.link | sort: 'lang' %}
-                {% for page in pages %}
-                <li><a href="{{ page.url | prepend: site.baseurl }}" class="{{ page.lang }}">{{ page.lang | upcase }}</a></li>
-                {% endfor %}
-                <li><a href="https://github.com/i5ar/jekyll-painter">Add</a></li>
-            </ul>
-        </div>
+<aside class="wrapper-lang">
+    <div id="dropdown-lang" class="wrapper-dropdown-lang btn btn-custom">
+        <span></span>
+        <ul class="dropdown">
+            {% assign pages=site.pages | where:"link", page.link | sort: 'lang' %}
+            {% for page in pages %}
+            <li><a href="{{ page.url | prepend: site.baseurl }}" class="{{ page.lang }}">{{ page.lang | upcase }}</a></li>
+            {% endfor %}
+            <li><a href="https://github.com/i5ar/jekyll-painter">Add</a></li>
+        </ul>
     </div>
 </aside>
 
 <script type="text/javascript">
 $( document ).ready(function() {
     var $lang = $("html").attr("lang");
-    $('#dd span').append($lang.toUpperCase());
-    $('#dd').on('click', function(event){
+    $('#dropdown-lang span').append($lang.toUpperCase());
+    $('#dropdown-lang').on('click', function(event){
         $(this).toggleClass('active');
     });
 });
