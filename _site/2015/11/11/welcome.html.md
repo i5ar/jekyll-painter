@@ -1,6 +1,12 @@
-# Welcome
+*Welcome to the*
 
-Welcome to the [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
+## Jekyll Painter
+
+> A `.js` based pagination with support for animated `.svg` paths.
+
+- Build in [Jekyll][jekyll];
+- Paged by [Reveal.js][reveal.js];
+- Animated by [Lazy Line Painter][lazy-line-painter].
 
 <!-- .slide: id="" class="lang" -->
 

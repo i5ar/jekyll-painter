@@ -6,9 +6,12 @@ A [Jekyll][jekyllrb] theme for creating [Reveal.js][reveal.js] presentation alon
 
 - Add languages modal `£` key;
 - Add custom modal `!` key;
-- Customize arrows;
-- Add modal layout;
-- Short includes.
+- Replace help `?` modal keys;
+- Customize arrows and styles with *fontawesome*;
+- Add modal template to `_layouts`;
+- Short `_includes` file names.
+- Use `head.js` library to prevent `Uncaught TypeError`;
+- Use `class` with in `id` or `data-line` to load animation consecutively.
 
 [jekyllrb]:             http://jekyllrb.com/
 [reveal.js]:            https://github.com/hakimel/reveal.js/

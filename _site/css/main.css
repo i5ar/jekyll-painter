@@ -12,7 +12,9 @@ mark {
   background: none;
   box-shadow: none; }
   .reveal blockquote p:first-child:before {
-    content: "\""; }
+    content: "\f10d";
+    font-family: FontAwesome;
+    padding-right: 10px; }
 .reveal .slides section .fragment.highlight-grey,
 .reveal .slides section .fragment.highlight-current-grey {
   opacity: 1;
@@ -35,9 +37,9 @@ mark {
 /**
  * Lazy Line Painter
  */
-.reveal .slides > section .lazylinepainter {
+.reveal .slides .lazylinepainter {
   top: auto !important; }
-  .reveal .slides > section .lazylinepainter p {
+  .reveal .slides .lazylinepainter p {
     position: absolute;
     bottom: 10%;
     left: 0;
@@ -50,24 +52,6 @@ mark {
   z-index: 9;
   bottom: 45px;
   left: 20px; }
-.reveal .wrapper-modal {
-  position: absolute;
-  margin: 5px;
-  display: none;
-  z-index: 9;
-  top: 20px;
-  left: 20px; }
-.reveal .overlay.overlay-modal .viewport {
-  overflow: auto;
-  color: #fff; }
-.reveal .overlay.overlay-modal .viewport .viewport-inner {
-  width: 600px;
-  margin: 0 auto;
-  padding: 60px;
-  text-align: center;
-  letter-spacing: normal; }
-.reveal .overlay.overlay-modal .viewport .viewport-inner .title {
-  font-size: 20px; }
 .reveal .progress {
   height: 10px; }
 .reveal .btn {
@@ -75,6 +59,28 @@ mark {
   .reveal .btn:hover, .reveal .btn:focus, .reveal .btn .focus {
     color: #dd5567;
     text-decoration: none; }
+
+.wrapper-modal {
+  position: absolute;
+  margin: 5px;
+  display: none;
+  z-index: 9;
+  top: 20px;
+  left: 20px; }
+
+.overlay.overlay-modal .viewport {
+  overflow: auto;
+  color: #fff; }
+
+.overlay.overlay-modal .viewport .viewport-inner {
+  width: 600px;
+  margin: 0 auto;
+  padding: 60px;
+  text-align: center;
+  letter-spacing: normal; }
+
+.overlay.overlay-modal .viewport .viewport-inner .title {
+  font-size: 20px; }
 
 /**
  * Bootstrap
