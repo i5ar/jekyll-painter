@@ -2,10 +2,10 @@
 
 ## Jekyll Painter
 
-> A `.js` based pagination with support for animated `.svg` paths.
+> Just a `.js` based presentation with support for animated `.svg` paths.
 
 - Build in [Jekyll][jekyll];
-- Paged by [Reveal.js][reveal.js];
+- Paged by [reveal.js][reveal.js];
 - Animated by [Lazy Line Painter][lazy-line-painter].
 
 <!-- .slide: id="" class="lang" -->

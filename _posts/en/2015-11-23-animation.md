@@ -7,13 +7,11 @@ lang: en
 
 [Lazy Line Painter][lazy-line-painter] animations.
 
-{% include selector.html id="pre-drawing2" class="load" %}
-
 [lazy-line-painter]:https://github.com/camoconnell/lazy-line-painter/
 
 --
 
-{% include selector.html id="drawing2" class="modal fire" %}
+{% include selector.html id="drawing2" class="modal" %}
 {% include background.html background="#dd5567" %}
 
 **open** source

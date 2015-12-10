@@ -1,4 +1,4 @@
-<!-- .slide: id="drawing" class="modal fire" -->
+<!-- .slide: id="drawing" class="modal" -->
 
 <!-- .slide: data-background="#dd5567" -->
 

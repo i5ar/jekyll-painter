@@ -50,9 +50,9 @@
 
 		<div class="reveal">
 
-			<aside class="wrapper-lang">
-    <div id="dropdown-lang" class="wrapper-dropdown-lang btn btn-custom">
-        <span></span>
+			<aside class="wrapper-dropdown">
+    <div id="dropdown-lang" class="wrapper-dropdown-lang">
+        <button class="btn btn-custom"></button>
         <ul class="dropdown">
             
             
@@ -64,7 +64,7 @@
             
             <li><a href="/jekyll-painter/benvenuto.html" class="it">IT</a></li>
             
-            <li><a href="https://github.com/i5ar/jekyll-painter">Add</a></li>
+            <li><a href="https://github.com/i5ar/jekyll-painter">Add...</a></li>
         </ul>
     </div>
 </aside>
@@ -72,7 +72,7 @@
 <script type="text/javascript">
 $( document ).ready(function() {
     var $lang = $("html").attr("lang");
-    $('#dropdown-lang span').append($lang.toUpperCase());
+    $('#dropdown-lang button').append($lang.toUpperCase());
     $('#dropdown-lang').on('click', function(event){
         $(this).toggleClass('active');
     });
@@ -99,7 +99,8 @@ $( document ).ready(function() {
 <script type="text/template">
 # Bienvenida
 
-Bienvenida [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
+<!-- .slide: id="" class="lang" -->
+
 
 [jekyll]:               https://github.com/jekyll/jekyll
 [reveal.js]:            https://github.com/hakimel/reveal.js/
@@ -186,7 +187,7 @@ Bienvenida [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
 				'drawing': {
 					'url': 			'https://rawgit.com/i5ar/19a63be7cad19573afea/raw/315eb032fd49d70e9ab22cc10965466b67216795/drawing.js',
 					'hashName': 	'#drawing',
-					'strokeWidth': 	5,
+					'strokeWidth': 	3.5,
 					'strokeColor': 	'#a23'
 			    },
 				'drawing2': {
@@ -197,6 +198,8 @@ Bienvenida [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
 			    }
 			};
 
+			// TODO: Load script in head only once to speed up the timeline
+			// NOTE: See reveal.js load themes
 			var getLine =  function(action, url, hashName, strokeWidth, strokeColor){
 		        var $id = $(hashName);
 		        $.getScript( url, function() {
@@ -240,34 +243,37 @@ Bienvenida [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
 				});
 		    }
 
-			var setLine = function(id, action) {
+			var setLine = function(key, action) {
 				getLine(action,
-					graphObj[id].url,
-					graphObj[id].hashName,
-					graphObj[id].strokeWidth,
-					graphObj[id].strokeColor
+					graphObj[key].url,
+					graphObj[key].hashName,
+					graphObj[key].strokeWidth,
+					graphObj[key].strokeColor
 				);
 			}
 
-			var getAnimation = function(id, className, nextSlide) {
+			var getAnimation = function(idCurrent, className, idNext, idPrevious) {
 				for (var key in graphObj) {
-					if (key == nextSlide.id && className.indexOf("load") >= 0) {
-						setLine(key, "erase");
-					} else if (key == id && className.indexOf("fire") >= 0) {
+					if (key === idCurrent) {
 						setLine(key, "paint");
+						console.log( "get current slide graph and paint!\t"+ key);
 						$('.controls-anim').show();
-			        } else {
+					} else {
 						$('.controls-anim').hide();
 					}
+					if (key === idNext || key == idPrevious) {
+						setLine(key, "erase");
+						console.log( "get previous/next slide graph and erase it!\t"+ key);
+			        }
 				}
 			}
 
-			var getModal = function(id, className) {
+			var getModal = function(idCurrent, className) {
 				// Check presence of "modal" classname
 				if (className.indexOf("modal") >= 0) {
 					// https://api.jquery.com/jquery.ajax/
 					$.ajax({
-					    url: "ajax/"+ id +".html",
+					    url: "ajax/"+ idCurrent +".html",
 					    success: function() {
 							// Show button
 							$(".wrapper-modal").show();
@@ -280,7 +286,7 @@ Bienvenida [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
 							// Append HTML
 							$("div.reveal").append(data);
 							// Link back to the slide
-							$("a.close").attr("href", "#/"+ id);
+							$("a.close").attr("href", "#/"+ idCurrent);
 							// Remove modal windows
 							$(".close").on("click", function() {
 								$("div.overlay").remove();
@@ -295,26 +301,38 @@ Bienvenida [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
 
 			var getLang = function(className) {
 				if (className.indexOf("lang") >= 0) {
-					$('.wrapper-lang').show();
+					$('.wrapper-dropdown').show();
 				} else {
-					$('.wrapper-lang').hide();
+					$('.wrapper-dropdown').hide();
 				}
 			}
 
 			// https://github.com/hakimel/reveal.js#slide-changed-event
 			Reveal.addEventListener( 'slidechanged', function( event ) {
-				var id = event.currentSlide.id;
+				var idCurrent = event.currentSlide.id;
 				var className = event.currentSlide.className;
 				var dataName = event.currentSlide.getAttribute( 'data-name' );
-				if( event.currentSlide.nextElementSibling ) {
-					var nextSlide = event.currentSlide.nextElementSibling;
+				if( event.previousSlide ) {
+					var idPrevious = event.previousSlide.id;
 				} else {
-					var nextSlide = false;
+					var idPrevious = false;
+				}
+				if( event.currentSlide.nextElementSibling ) {
+					var idNext = event.currentSlide.nextElementSibling.id;
+				} else {
+					var idNext = false;
 				}
 				getLang(className);
-				getModal(id, className);
-				getAnimation(id, className, nextSlide);
+				getModal(idCurrent, className);
+				getAnimation(idCurrent, className, idNext, idPrevious);
 			});
+
+			// Ready event in first slide
+			Reveal.addEventListener( 'ready', function( event ) {
+				// Show dropdown languages
+				getLang(event.currentSlide.className)
+			});
+
 		})( jQuery );
 		</script>
 	</body>

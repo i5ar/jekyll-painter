@@ -79,16 +79,36 @@
             text-decoration: none;
         }
     }
+    // Dropdown wrapper
+    aside.wrapper-dropdown {
+        position:absolute;
+        margin: 10px 5px;
+        display: none;
+        z-index:9;
+        top: 20px;
+        left: 20px;
+        font-size: 0.6em;
+        *zoom: 1;
+        &:after {
+            clear: both;
+            content: "";
+            display: table;
+        }
+    }
+    // Modal wrapper
+    aside.wrapper-modal {
+        position: absolute;
+        margin: 5px;
+        display: none;                                                  // Hide
+        z-index: 9;
+        top: 20px;
+        left: 20px;
+    }
 }
-// Modal
-.wrapper-modal {
-    position: absolute;
-    margin: 5px;
-    display: none;
-    z-index: 9;
-    top: 20px;
-    left: 20px;
-}
+/**
+ * Modal
+ */
+// Modal credits
 .overlay.overlay-modal .viewport {
     overflow: auto;
     color: #fff;
@@ -103,6 +123,7 @@
 .overlay.overlay-modal .viewport .viewport-inner .title {
     font-size: 20px;
 }
+
 /**
  * Bootstrap
  */
@@ -138,78 +159,49 @@
 /**
  * Dropdown
  */
-// Global
-.wrapper-lang {
-    position:absolute;
-    margin: 10px 0;
-    display: none;
-    z-index:9;
-    top: 20px;
-    left: 20px;
-    font-size: 0.6em;
-    *zoom: 1;
-    &:after {
-        clear: both;
+// Dropdown languages
+.wrapper-dropdown-lang {
+    position: relative; // Enable absolute positionning for children and pseudo elements
+    margin: 0 auto;
+    outline: none;
+    // Arrow
+    button:after {
         content: "";
-        display: table;
+        display: inline-block;
+        margin-left: 12px;
+        border-width: 6px 0 6px 6px;
+        border-style: solid;
+        border-color: transparent #000;
     }
-    .wrapper-dropdown-lang {
-        position: relative;     // Enable absolute positionning for children and pseudo elements
-        width: 100%;
-        padding: 6px 12px !important;
-        margin: 0 auto;
-        background: #eee;
-        color: #000;
-        outline: none;
-        cursor: pointer;
-        // Custom
-        font-size: 14px;
-        line-height: 22px;
-        &:after {
-            content: "";
-            width: 0;
-            height: 0;
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            margin-top: -6px;
-            border-width: 6px 0 6px 6px;
-            border-style: solid;
-            border-color: transparent #fff;
+    ul.dropdown {
+        list-style: none;
+        display: table;
+        margin: 1px;
+        background-color: buttonface;
+        opacity: 0;                                                     // Hide
+        pointer-events: none;                                           // Hide
+        li a {
+            display: block;
+            text-decoration: none;
+            color: #000;
+            padding: 6px 12px;
+            font-size: 14px;
         }
-        span {
-            padding-right: 1em;
+        // Hover state
+        li:hover a {
+            background: $brand-color;
         }
-        .dropdown {
-            list-style-type: square;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            width: 100%;
-            background: #fff;
-            list-style: none;
-            opacity: 0;             // Hiding
-            pointer-events: none;   // Hiding
-            li a {
-                display: block;
-                text-decoration: none;
-                color: #000;
-                padding: 6px 12px;
-            }
-            // Hover state
-            li:hover a {
-                background: $brand-color;
-            }
-        }
-        // Active state
-        &.active .dropdown {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        &.active:after {
-            border-color: $brand-color-pale transparent;
-            border-width: 6px 6px 0 6px ;
-            margin-top: -3px;
-        }
+    }
+    // Active state
+    &.active .dropdown {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    // Arrow
+    &.active button:after {
+        border-color: $brand-color-pale transparent;
+        border-width: 6px 6px 0 6px ;
+        margin-bottom: 3px;
+        margin-left: 6px;
     }
 }

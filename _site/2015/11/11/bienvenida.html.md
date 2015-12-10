@@ -1,6 +1,7 @@
 # Bienvenida
 
-Bienvenida [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
+<!-- .slide: id="" class="lang" -->
+
 
 [jekyll]:               https://github.com/jekyll/jekyll
 [reveal.js]:            https://github.com/hakimel/reveal.js/

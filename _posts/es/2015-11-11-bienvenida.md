@@ -5,7 +5,7 @@ lang: es
 
 # Bienvenida
 
-Bienvenida [Jekyll][jekyll] [Reveal][reveal.js] [Painter][lazy-line-painter].
+{% include selector.html class="lang" %}
 
 [jekyll]:               https://github.com/jekyll/jekyll
 [reveal.js]:            https://github.com/hakimel/reveal.js/

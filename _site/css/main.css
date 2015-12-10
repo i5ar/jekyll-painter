@@ -59,8 +59,20 @@ mark {
   .reveal .btn:hover, .reveal .btn:focus, .reveal .btn .focus {
     color: #dd5567;
     text-decoration: none; }
-
-.wrapper-modal {
+.reveal aside.wrapper-dropdown {
+  position: absolute;
+  margin: 10px 5px;
+  display: none;
+  z-index: 9;
+  top: 20px;
+  left: 20px;
+  font-size: 0.6em;
+  *zoom: 1; }
+  .reveal aside.wrapper-dropdown:after {
+    clear: both;
+    content: "";
+    display: table; }
+.reveal aside.wrapper-modal {
   position: absolute;
   margin: 5px;
   display: none;
@@ -68,6 +80,9 @@ mark {
   top: 20px;
   left: 20px; }
 
+/**
+ * Modal
+ */
 .overlay.overlay-modal .viewport {
   overflow: auto;
   color: #fff; }
@@ -113,67 +128,40 @@ mark {
 /**
  * Dropdown
  */
-.wrapper-lang {
-  position: absolute;
-  margin: 10px 0;
-  display: none;
-  z-index: 9;
-  top: 20px;
-  left: 20px;
-  font-size: 0.6em;
-  *zoom: 1; }
-  .wrapper-lang:after {
-    clear: both;
+.wrapper-dropdown-lang {
+  position: relative;
+  margin: 0 auto;
+  outline: none; }
+  .wrapper-dropdown-lang button:after {
     content: "";
-    display: table; }
-  .wrapper-lang .wrapper-dropdown-lang {
-    position: relative;
-    width: 100%;
-    padding: 6px 12px !important;
-    margin: 0 auto;
-    background: #eee;
-    color: #000;
-    outline: none;
-    cursor: pointer;
-    font-size: 14px;
-    line-height: 22px; }
-    .wrapper-lang .wrapper-dropdown-lang:after {
-      content: "";
-      width: 0;
-      height: 0;
-      position: absolute;
-      right: 16px;
-      top: 50%;
-      margin-top: -6px;
-      border-width: 6px 0 6px 6px;
-      border-style: solid;
-      border-color: transparent #fff; }
-    .wrapper-lang .wrapper-dropdown-lang span {
-      padding-right: 1em; }
-    .wrapper-lang .wrapper-dropdown-lang .dropdown {
-      list-style-type: square;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      width: 100%;
-      background: #fff;
-      list-style: none;
-      opacity: 0;
-      pointer-events: none; }
-      .wrapper-lang .wrapper-dropdown-lang .dropdown li a {
-        display: block;
-        text-decoration: none;
-        color: #000;
-        padding: 6px 12px; }
-      .wrapper-lang .wrapper-dropdown-lang .dropdown li:hover a {
-        background: #a23; }
-    .wrapper-lang .wrapper-dropdown-lang.active .dropdown {
-      opacity: 1;
-      pointer-events: auto; }
-    .wrapper-lang .wrapper-dropdown-lang.active:after {
-      border-color: #dd5567 transparent;
-      border-width: 6px 6px 0 6px;
-      margin-top: -3px; }
+    display: inline-block;
+    margin-left: 12px;
+    border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent #000; }
+  .wrapper-dropdown-lang ul.dropdown {
+    list-style: none;
+    display: table;
+    margin: 1px;
+    background-color: buttonface;
+    opacity: 0;
+    pointer-events: none; }
+    .wrapper-dropdown-lang ul.dropdown li a {
+      display: block;
+      text-decoration: none;
+      color: #000;
+      padding: 6px 12px;
+      font-size: 14px; }
+    .wrapper-dropdown-lang ul.dropdown li:hover a {
+      background: #a23; }
+  .wrapper-dropdown-lang.active .dropdown {
+    opacity: 1;
+    pointer-events: auto; }
+  .wrapper-dropdown-lang.active button:after {
+    border-color: #dd5567 transparent;
+    border-width: 6px 6px 0 6px;
+    margin-bottom: 3px;
+    margin-left: 6px; }
 
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
