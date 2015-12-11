@@ -10,7 +10,7 @@ Vertical slides.
 
     > Bar!
 
-<i class="fa fa-angle-double-down sz-4 pointer navigate-down"></i>
+<i class="fa fa-angle-double-down fa-4x"></i>
 
 
 --

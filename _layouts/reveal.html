@@ -141,7 +141,21 @@
 					}
 				}
 			});
+
+
+
+
+
+
+
+
+
+
+
+
+
 		});
+
 		</script>
 		<script src="{{ site.lazylinepainter_path | prepend: site.baseurl }}/jquery.lazylinepainter-1.7.0.min.js"></script>
 		<script>
@@ -165,6 +179,7 @@
 
 		// https://github.com/camoconnell/lazy-line-painter/
 		(function( $ ){
+
 
 			// TODO: Load script in head only once to speed up the timeline
 			// NOTE: See reveal.js load themes
@@ -302,7 +317,12 @@
 			// Ready event in first slide
 			Reveal.addEventListener( 'ready', function( event ) {
 				// Show dropdown languages
-				getLang(event.currentSlide.className)
+				getLang(event.currentSlide.className);
+				// Style arrows
+				$(".navigate-left").attr("class", "navigate-left fa fa-angle-left");
+				$(".navigate-right").attr("class", "navigate-right fa fa-angle-right");
+				$(".navigate-up").attr("class", "navigate-up fa fa-angle-double-up");
+				$(".navigate-down").attr("class", "navigate-down fa fa-angle-double-down");
 			});
 
 		})( jQuery );

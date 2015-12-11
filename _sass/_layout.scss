@@ -197,11 +197,38 @@
         opacity: 1;
         pointer-events: auto;
     }
-    // Arrow
+    // Dropdown arrow
     &.active button:after {
         border-color: $brand-color-pale transparent;
         border-width: 6px 6px 0 6px ;
         margin-bottom: 3px;
         margin-left: 6px;
+    }
+}
+/**
+ * Slide control
+ */
+// Font Awesome arrows
+.reveal .controls {
+    width: 128px;
+    height: 128px;
+    button {
+        border: 0;
+    }
+    .navigate-left {
+        left: 0;
+        top: 42px;
+    }
+    .navigate-right {
+        left: 96px;
+        top: 42px;
+    }
+    .navigate-top {
+        left: 42px;
+        top: 0;
+    }
+    .navigate-down {
+        left: 42px;
+        top: 84px;
     }
 }

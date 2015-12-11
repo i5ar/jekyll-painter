@@ -163,6 +163,27 @@ mark {
     margin-bottom: 3px;
     margin-left: 6px; }
 
+/**
+ * Slide control
+ */
+.reveal .controls {
+  width: 128px;
+  height: 128px; }
+  .reveal .controls button {
+    border: 0; }
+  .reveal .controls .navigate-left {
+    left: 0;
+    top: 42px; }
+  .reveal .controls .navigate-right {
+    left: 96px;
+    top: 42px; }
+  .reveal .controls .navigate-top {
+    left: 42px;
+    top: 0; }
+  .reveal .controls .navigate-down {
+    left: 42px;
+    top: 84px; }
+
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
