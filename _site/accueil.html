@@ -31,10 +31,7 @@
 		<!-- Custom icon & favicon -->
 		<link rel="icon" type="image/png" href="/jekyll-painter/images/favicon.ico">
 		<link rel="icon" sizes="192x192"  href="/jekyll-painter/images/icon-hires.png" />
-		<link rel="icon" sizes="128x128" href="/jekyll-painter/images/icon-hires.png" />
-		<link rel="apple-touch-icon" sizes="57x57" href="/jekyll-painter/images/apple-touch-icon-iphone-retina.png" />
 		<link rel="apple-touch-icon" sizes="114x114" href="/jekyll-painter/images/apple-touch-icon-iphone-retina.png" />
-		<link rel="apple-touch-icon" sizes="72x72" href="/jekyll-painter/images/apple-touch-icon-ipad-retina.png" />
 		<link rel="apple-touch-icon" sizes="144x144" href="/jekyll-painter/images/apple-touch-icon-ipad-retina.png" />
 
 		<!-- jQuery -->
@@ -74,7 +71,7 @@
             
             <li><a href="/jekyll-painter/benvenuto.html" class="it">IT</a></li>
             
-            <li><a href="https://github.com/i5ar/jekyll-painter">Add...</a></li>
+            <li><a href="https://github.com/i5ar/jekyll-painter/tree/develop/_posts">Add...</a></li>
         </ul>
     </div>
 </aside>
@@ -195,14 +192,14 @@ $( document ).ready(function() {
 		// Define graphics in object
 		var graphObj = {
 			"drawing": {
-				"url":			"js/drawing.js",
+				"url":			"ajax/drawing.json",
 				// "url": 			"https://rawgit.com/i5ar/19a63be7cad19573afea/raw/315eb032fd49d70e9ab22cc10965466b67216795/drawing.js",
 				"hashName": 	"#drawing",
 				"strokeWidth": 	3.5,
 				"strokeColor": 	"#a23"
 			},
 			"drawing2": {
-				"url":			"js/drawing2.js",
+				"url":			"ajax/drawing2.json",
 				// "url": 			"https://rawgit.com/i5ar/0c7d7fd0361bbb45df62/raw/398d3f5cb566c68939d5fa4f69c3310b3f9247d4/drawing2.js",
 				"hashName": 	"#drawing2",
 				"strokeWidth": 	74,
@@ -303,6 +300,7 @@ $( document ).ready(function() {
 							alert("ID found, page not found.");
 						}
 					}).done(function(data, status) {
+
 						$("#modal").on("click", function() {
 							// Append HTML
 							$("div.reveal").append(data);
