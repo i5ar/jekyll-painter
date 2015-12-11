@@ -86,9 +86,11 @@ $( document ).ready(function() {
 });
 </script>
 
+
 			<aside class="wrapper-modal">
     <button id="modal" class="btn btn-custom">Modal</button>
 </aside>
+
 
 			<aside class="controls-anim">
     <button class="paint btn btn-custom"><i class="fa fa-play"></i></button>
@@ -106,7 +108,7 @@ $( document ).ready(function() {
 <script type="text/template">
 # Bienvenu
 
-<!-- .slide: id="" class="lang" -->
+<!-- .slide: id="" class="lang" data-modal-title="" -->
 
 
 [jekyll]:               https://github.com/jekyll/jekyll
@@ -286,30 +288,25 @@ $( document ).ready(function() {
 				}
 			}
 
-			var getModal = function(idCurrent, className) {
+			var getModal = function(idCurrent, className, dataModalTitle) {
 				// Check presence of "modal" classname
 				if (className.indexOf("modal") >= 0) {
-					// https://api.jquery.com/jquery.ajax/
-					$.ajax({
-					    url: "ajax/"+ idCurrent +".html",
-					    success: function() {
-							// Show button
-							$(".wrapper-modal").show();
-					    },
-					    error: function() {
-							alert("ID found, page not found.");
-						}
-					}).done(function(data, status) {
+					$(".wrapper-modal").show();
+					$("#modal").on("click", function() {
 
-						$("#modal").on("click", function() {
-							// Append HTML
-							$("div.reveal").append(data);
-							// Link back to the slide
-							$("a.close").attr("href", "#/"+ idCurrent);
-							// Remove modal windows
-							$(".close").on("click", function() {
-								$("div.overlay").remove();
-							});
+						// Append HTML
+						$(".overlay-modal").remove();
+						$("div.reveal").append(
+							'<div class="overlay overlay-modal visible">\
+								<header><a class="close" href="#"><span class="icon"></span></a></header>\
+								<div class="viewport"><div class="viewport-inner"><p class="title">'+ dataModalTitle +'</p></div></div>\
+							</div>');
+
+						// Link back to the slide
+						$("a.close").attr("href", "#/"+ idCurrent);
+						// Remove modal windows
+						$(".close").on("click", function() {
+							$("div.overlay").remove();
 						});
 					});
 				} else {
@@ -331,6 +328,7 @@ $( document ).ready(function() {
 				var idCurrent = event.currentSlide.id;
 				var className = event.currentSlide.className;
 				var dataName = event.currentSlide.getAttribute( 'data-name' );
+				var dataModalTitle = event.currentSlide.getAttribute( 'data-modal-title' );
 				if( event.previousSlide ) {
 					var idPrevious = event.previousSlide.id;
 				} else {
@@ -342,7 +340,7 @@ $( document ).ready(function() {
 					var idNext = false;
 				}
 				getLang(className);
-				getModal(idCurrent, className);
+				getModal(idCurrent, className, dataModalTitle);
 				getAnimation(idCurrent, className, idNext, idPrevious);
 
 			});

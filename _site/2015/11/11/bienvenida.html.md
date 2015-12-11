@@ -1,6 +1,6 @@
 # Bienvenida
 
-<!-- .slide: id="" class="lang" -->
+<!-- .slide: id="" class="lang" data-modal-title="" -->
 
 
 [jekyll]:               https://github.com/jekyll/jekyll

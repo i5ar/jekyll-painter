@@ -8,7 +8,7 @@
 - Paged by [reveal.js][reveal.js];
 - Animated by [Lazy Line Painter][lazy-line-painter].
 
-<!-- .slide: id="" class="lang" -->
+<!-- .slide: id="" class="lang" data-modal-title="" -->
 
 
 [jekyll]:               https://github.com/jekyll/jekyll

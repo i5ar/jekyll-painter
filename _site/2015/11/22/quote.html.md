@@ -9,5 +9,5 @@
 
 [1]:https://daringfireball.net/projects/markdown/syntax#span
 
-<!-- .slide: id="quote" class="modal" -->
+<!-- .slide: id="quote" class="modal" data-modal-title="Title" -->
 
