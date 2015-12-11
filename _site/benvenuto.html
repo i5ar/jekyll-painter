@@ -37,6 +37,7 @@
 		<link rel="apple-touch-icon" sizes="72x72" href="/jekyll-painter/images/apple-touch-icon-ipad-retina.png" />
 		<link rel="apple-touch-icon" sizes="144x144" href="/jekyll-painter/images/apple-touch-icon-ipad-retina.png" />
 
+		<!-- jQuery -->
 		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
 		<!-- Printing and PDF exports -->
@@ -186,6 +187,7 @@ Per concludere.
 
 			</div>
 		</div>
+
 		<script src="/jekyll-painter/vendor/reveal.js/lib/js/head.min.js"></script>
 		<script src="/jekyll-painter/vendor/reveal.js/js/reveal.js"></script>
 		<script>
@@ -223,59 +225,70 @@ Per concludere.
 			],
 		});
 
-		// FIXME: Uncaught TypeError: Cannot read property 'style' of undefined
-		// https://github.com/hakimel/reveal.js#keyboard-bindings
-		Reveal.configure({
-			keyboard: {
-				// Go to the next slide when the `Enter` key is pressed
-				13: "next",
-				// Pause video when `Space` bar is pressed
-				32: function () {
-					// Add `action-video` class to each `video` tag
-					$( ".slide-background video" ).each(function() {
-						$( this ).attr("class", "action-video");
-					});
-					// Use each `action-video` class
-					$( ".action-video" ).each(function() {
-						var video = $(this);
-						// The `play()` is a function of the DOM element so the jQuery equivalent would be `get(0).play()`
-						// http://stackoverflow.com/questions/4646998/play-pause-html-5-video-using-jquery
-						if (video.get(0).paused == true) {
-							video.get(0).play();
-						} else {
-							video.get(0).pause();
-						}
-					});
+		// https://github.com/headjs/headjs
+		head.ready(function() {
+			// https://github.com/hakimel/reveal.js#keyboard-bindings
+			Reveal.configure({
+				keyboard: {
+					// Go to the next slide when the `Enter` key is pressed
+					13: "next",
+					// Pause video when `Space` bar is pressed
+					32: function () {
+						// Add `action-video` class to each `video` tag
+						$( ".slide-background video" ).each(function() {
+							$( this ).attr("class", "action-video");
+						});
+						// Use each `action-video` class
+						$( ".action-video" ).each(function() {
+							var video = $(this);
+							// The `play()` is a function of the DOM element so the jQuery equivalent would be `get(0).play()`
+							// http://stackoverflow.com/questions/4646998/play-pause-html-5-video-using-jquery
+							if (video.get(0).paused == true) {
+								video.get(0).play();
+							} else {
+								video.get(0).pause();
+							}
+						});
+					}
 				}
-			}
+			});
 		});
 		</script>
-
 		<script src="/jekyll-painter/vendor/lazy-line-painter/jquery.lazylinepainter-1.7.0.min.js"></script>
 		<script>
+		// Define graphics in object
+		var graphObj = {
+			"drawing": {
+				"url":			"js/drawing.js",
+				// "url": 			"https://rawgit.com/i5ar/19a63be7cad19573afea/raw/315eb032fd49d70e9ab22cc10965466b67216795/drawing.js",
+				"hashName": 	"#drawing",
+				"strokeWidth": 	3.5,
+				"strokeColor": 	"#a23"
+			},
+			"drawing2": {
+				"url":			"js/drawing2.js",
+				// "url": 			"https://rawgit.com/i5ar/0c7d7fd0361bbb45df62/raw/398d3f5cb566c68939d5fa4f69c3310b3f9247d4/drawing2.js",
+				"hashName": 	"#drawing2",
+				"strokeWidth": 	74,
+				"strokeColor": 	"#a23"
+			}
+		};
+
 		// https://github.com/camoconnell/lazy-line-painter/
 		(function( $ ){
-			// Define graphics in object
-			var graphObj = {
-				'drawing': {
-					'url': 			'https://rawgit.com/i5ar/19a63be7cad19573afea/raw/315eb032fd49d70e9ab22cc10965466b67216795/drawing.js',
-					'hashName': 	'#drawing',
-					'strokeWidth': 	3.5,
-					'strokeColor': 	'#a23'
-			    },
-				'drawing2': {
-					'url': 			'https://rawgit.com/i5ar/0c7d7fd0361bbb45df62/raw/398d3f5cb566c68939d5fa4f69c3310b3f9247d4/drawing2.js',
-					'hashName': 	'#drawing2',
-					'strokeWidth': 	74,
-					'strokeColor': 	'#a23'
-			    }
-			};
 
 			// TODO: Load script in head only once to speed up the timeline
 			// NOTE: See reveal.js load themes
 			var getLine =  function(action, url, hashName, strokeWidth, strokeColor){
 		        var $id = $(hashName);
-		        $.getScript( url, function() {
+					// https://api.jquery.com/jquery.ajaxsetup/
+					$.ajaxSetup({
+						cache: true
+					});
+					$.ajax({
+						url: url,
+						dataType: "script"
+					}).done(function() {
 		            $id.lazylinepainter({
 		                'svgData': pathObj,
 
@@ -300,8 +313,7 @@ Per concludere.
 						'ease': 'easeInOutQuad'
 		            });
 					$id.lazylinepainter(action);
-		        });
-
+				});
 				$(".paint").click( function(){
 					$id.lazylinepainter("paint");
 				});
@@ -398,6 +410,7 @@ Per concludere.
 				getLang(className);
 				getModal(idCurrent, className);
 				getAnimation(idCurrent, className, idNext, idPrevious);
+
 			});
 
 			// Ready event in first slide
