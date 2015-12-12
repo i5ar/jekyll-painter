@@ -1,16 +1,12 @@
-*Welcome to the*
+# R-key
 
-## Jekyll Painter
+*short for*
 
-> Just a `.js` based presentation with support for animated `.svg` paths.
+## <u>Archi</u>tect
 
-- Build in [Jekyll][jekyll];
-- Paged by [reveal.js][reveal.js];
-- Animated by [Lazy Line Painter][lazy-line-painter].
+> This presentation is intended to show the interesting parts.
+
+**Let's grok!**
 
 <!-- .slide: id="" class="lang" data-modal-title="" -->
 
-
-[jekyll]:               https://github.com/jekyll/jekyll
-[reveal.js]:            https://github.com/hakimel/reveal.js/
-[lazy-line-painter]:    https://github.com/camoconnell/lazy-line-painter
