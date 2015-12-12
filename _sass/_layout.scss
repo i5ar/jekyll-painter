@@ -17,6 +17,9 @@
             padding-right: 10px;
         }
     }
+    button {
+        outline: none;
+    }
     .slides section {
         .fragment.highlight-grey,
         .fragment.highlight-current-grey {
@@ -163,7 +166,6 @@
 .wrapper-dropdown-lang {
     position: relative; // Enable absolute positionning for children and pseudo elements
     margin: 0 auto;
-    outline: none;
     // Arrow
     button:after {
         content: "";
@@ -203,32 +205,5 @@
         border-width: 6px 6px 0 6px ;
         margin-bottom: 3px;
         margin-left: 6px;
-    }
-}
-/**
- * Slide control
- */
-// Font Awesome arrows
-.reveal .controls {
-    width: 128px;
-    height: 128px;
-    button {
-        border: 0;
-    }
-    .navigate-left {
-        left: 0;
-        top: 42px;
-    }
-    .navigate-right {
-        left: 96px;
-        top: 42px;
-    }
-    .navigate-top {
-        left: 42px;
-        top: 0;
-    }
-    .navigate-down {
-        left: 42px;
-        top: 84px;
     }
 }

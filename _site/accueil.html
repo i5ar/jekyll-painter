@@ -208,14 +208,14 @@ $( document ).ready(function() {
 		// Define graphics in object
 		var graphObj = {
 			"drawing": {
-				"url":			"ajax/drawing.json",
+				"url":			"ajax/drawing.js",
 				// "url": 			"https://rawgit.com/i5ar/19a63be7cad19573afea/raw/315eb032fd49d70e9ab22cc10965466b67216795/drawing.js",
 				"hashName": 	"#drawing",
 				"strokeWidth": 	3.5,
 				"strokeColor": 	"#a23"
 			},
 			"drawing2": {
-				"url":			"ajax/drawing2.json",
+				"url":			"ajax/drawing2.js",
 				// "url": 			"https://rawgit.com/i5ar/0c7d7fd0361bbb45df62/raw/398d3f5cb566c68939d5fa4f69c3310b3f9247d4/drawing2.js",
 				"hashName": 	"#drawing2",
 				"strokeWidth": 	74,
@@ -288,18 +288,18 @@ $( document ).ready(function() {
 			}
 
 			var getAnimation = function(idCurrent, className, idNext, idPrevious) {
-				for (var key in graphObj) {
-					if (key === idCurrent) {
-						setLine(key, "paint");
-						console.log( "get current slide graph and paint!\t"+ key);
-						$('.controls-anim').show();
-					} else {
-						$('.controls-anim').hide();
-					}
-					if (key === idNext || key == idPrevious) {
-						setLine(key, "erase");
-						console.log( "get previous/next slide graph and erase it!\t"+ key);
-			        }
+				if (graphObj[idCurrent] !== undefined) {
+					// console.log(Object.keys(graphObj));
+					setLine(idCurrent, "paint");
+					$('.controls-anim').show();
+				} else {
+					$('.controls-anim').hide();
+				}
+				if (graphObj[idNext] !== undefined) {
+					setLine(idNext, "erase");
+				}
+				if (graphObj[idPrevious] !== undefined) {
+					setLine(idPrevious, "erase");
 				}
 			}
 
@@ -364,11 +364,6 @@ $( document ).ready(function() {
 			Reveal.addEventListener( 'ready', function( event ) {
 				// Show dropdown languages
 				getLang(event.currentSlide.className);
-				// Style arrows
-				$(".navigate-left").attr("class", "navigate-left fa fa-angle-left");
-				$(".navigate-right").attr("class", "navigate-right fa fa-angle-right");
-				$(".navigate-up").attr("class", "navigate-up fa fa-angle-double-up");
-				$(".navigate-down").attr("class", "navigate-down fa fa-angle-double-down");
 			});
 
 		})( jQuery );

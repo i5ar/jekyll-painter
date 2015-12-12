@@ -15,6 +15,8 @@ mark {
     content: "\f10d";
     font-family: FontAwesome;
     padding-right: 10px; }
+.reveal button {
+  outline: none; }
 .reveal .slides section .fragment.highlight-grey,
 .reveal .slides section .fragment.highlight-current-grey {
   opacity: 1;
@@ -130,8 +132,7 @@ mark {
  */
 .wrapper-dropdown-lang {
   position: relative;
-  margin: 0 auto;
-  outline: none; }
+  margin: 0 auto; }
   .wrapper-dropdown-lang button:after {
     content: "";
     display: inline-block;
@@ -162,27 +163,6 @@ mark {
     border-width: 6px 6px 0 6px;
     margin-bottom: 3px;
     margin-left: 6px; }
-
-/**
- * Slide control
- */
-.reveal .controls {
-  width: 128px;
-  height: 128px; }
-  .reveal .controls button {
-    border: 0; }
-  .reveal .controls .navigate-left {
-    left: 0;
-    top: 42px; }
-  .reveal .controls .navigate-right {
-    left: 96px;
-    top: 42px; }
-  .reveal .controls .navigate-top {
-    left: 42px;
-    top: 0; }
-  .reveal .controls .navigate-down {
-    left: 42px;
-    top: 84px; }
 
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
