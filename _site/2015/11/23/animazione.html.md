@@ -9,7 +9,7 @@ Animazione [Lazy Line Painter][lazy-line-painter].
 
 --
 
-<!-- .slide: id="drawing2" class="" data-modal-title="" -->
+<!-- .slide: id="drawing" class="" data-modal-title="" -->
 
 <!-- .slide: data-background="#dd5567" -->
 

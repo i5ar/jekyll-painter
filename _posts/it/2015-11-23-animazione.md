@@ -13,7 +13,7 @@ Animazione [Lazy Line Painter][lazy-line-painter].
 
 --
 
-{% include selector.html id="drawing2" %}
+{% include selector.html id="drawing" %}
 {% include background.html background="#dd5567" %}
 
 **open** source

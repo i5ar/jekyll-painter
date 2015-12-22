@@ -141,7 +141,7 @@ Animazione [Lazy Line Painter][lazy-line-painter].
 
 --
 
-<!-- .slide: id="drawing2" class="" data-modal-title="" -->
+<!-- .slide: id="drawing" class="" data-modal-title="" -->
 
 <!-- .slide: data-background="#dd5567" -->
 
@@ -251,37 +251,23 @@ Per concludere.
 					}
 				}
 			});
-
-
-
-
-
-
-
-
-
-
-
-
-
 		});
-
 		</script>
 		<script src="/jekyll-painter/vendor/lazy-line-painter/jquery.lazylinepainter-1.7.0.min.js"></script>
 		<script>
 		// Define graphics in object
 		var graphObj = {
-			"drawing": {
-				"url":			"ajax/drawing.js",
+			"open-source": {
+				"url":			"ajax/open-source.js",
 				// "url": 			"https://rawgit.com/i5ar/19a63be7cad19573afea/raw/315eb032fd49d70e9ab22cc10965466b67216795/drawing.js",
-				"hashName": 	"#drawing",
+				"hashName": 	"#open-source",
 				"strokeWidth": 	3.5,
 				"strokeColor": 	"#a23"
 			},
-			"drawing2": {
-				"url":			"ajax/drawing2.js",
+			"open-source-alt": {
+				"url":			"ajax/open-source-alt.js",
 				// "url": 			"https://rawgit.com/i5ar/0c7d7fd0361bbb45df62/raw/398d3f5cb566c68939d5fa4f69c3310b3f9247d4/drawing2.js",
-				"hashName": 	"#drawing2",
+				"hashName": 	"#open-source-alt",
 				"strokeWidth": 	74,
 				"strokeColor": 	"#a23"
 			}
@@ -289,21 +275,24 @@ Per concludere.
 
 		// https://github.com/camoconnell/lazy-line-painter/
 		(function( $ ){
-
-
 			// TODO: Load script in head only once to speed up the timeline
 			// NOTE: See reveal.js load themes
-			var getLine =  function(action, url, hashName, strokeWidth, strokeColor){
+			var getLine =  function(key, action, url, hashName, strokeWidth, strokeColor){
 		        var $id = $(hashName);
-					// https://api.jquery.com/jquery.ajaxsetup/
-					$.ajaxSetup({
-						cache: true
-					});
-					$.ajax({
-						url: url,
-						dataType: "script"
-					}).done(function() {
-		            $id.lazylinepainter({
+				// https://api.jquery.com/jquery.ajaxsetup/
+				$.ajaxSetup({
+					cache: true
+				});
+				$.ajax({
+					url: url,
+					dataType: "script"
+				}).done(function(data) {
+
+					// Featured
+					var speedMultiplier = pathObj[key]['speedMultiplier'];
+					var drawSequential = pathObj[key]['drawSequential'];
+
+	            	$id.lazylinepainter({
 		                'svgData': pathObj,
 
 		                'strokeWidth': strokeWidth,
@@ -321,10 +310,10 @@ Per concludere.
 
 						// 'delay':
 						// 'overrideKey':
-						'speedMultiplier': 3,
-						'drawSequential': false,
+						'speedMultiplier': speedMultiplier,
+						'drawSequential': drawSequential,
 						// 'reverse':
-						'ease': 'easeInOutQuad'
+						// 'ease':
 		            });
 					$id.lazylinepainter(action);
 				});
@@ -343,7 +332,7 @@ Per concludere.
 		    }
 
 			var setLine = function(key, action) {
-				getLine(action,
+				getLine(key, action,
 					graphObj[key].url,
 					graphObj[key].hashName,
 					graphObj[key].strokeWidth,

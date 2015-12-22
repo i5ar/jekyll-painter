@@ -6,7 +6,7 @@
 
 --
 
-<!-- .slide: id="drawing2" class="modal" data-modal-title="Drawing2" -->
+<!-- .slide: id="open-source" class="modal" data-modal-title="Open Source" -->
 
 <!-- .slide: data-background="#dd5567" -->
 
