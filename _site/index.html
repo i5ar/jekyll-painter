@@ -112,12 +112,43 @@ $( document ).ready(function() {
 
 ## <u>Archi</u>tect
 
+#### No more platitudes
+
 > This presentation is intended to show the interesting parts.
 
 **Let's grok!**
 
-<!-- .slide: id="" class="lang" data-modal-title="" -->
+<!-- .slide: id="" class="lang" data-modal-title="" data-modal-content=""-->
 
+
+</script>
+</section>
+
+<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+<script type="text/template">
+## Definition
+
+#### Architétto
+
+<small>[dal lat. architectus, gr. ἀρχι-τέκτων, comp. di ἀρχι- (v. archi-) e τέκτων «costruttore»]</small>
+
+> Chi predispone i progetti per la costruzione di edifici e di opere d’architettura in genere, <span>e ne dirige e amministra l’esecuzione;</span><!-- .element: class="fragment" -->
+
+
+> <cite>[3cani][1]</cite><!-- .element: class="fragment" -->
+
+
+[1]:#
+
+--
+
+> Another great *definition*!
+<div></div>
+
+> <cite>[4gatti][2]</cite><!-- .element: class="fragment" -->
+
+
+[2]:#
 
 </script>
 </section>
@@ -201,6 +232,21 @@ Preparing tender applications:
 
 <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
 <script type="text/template">
+## Engineering
+
+Architects are allowed to do the math.
+
+| Material | Description          | Weight   |
+|----------|----------------------|---------:|
+| Concrete | Normal reinforcement | 24 kN/mc |
+| Glass    | Clear float          | 25 kN/mc |
+| Timber   | Softwood             | 6 kN/mc  |
+
+</script>
+</section>
+
+<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+<script type="text/template">
 ## Ideazione
 
 > L’ idea di un architetto non è mai solo formale. Deve essere al tempo stesso sociale, <span>scientifica e poetica.</span><!-- .element: class="fragment" -->
@@ -211,7 +257,7 @@ Preparing tender applications:
 
 [1]:#
 
-<!-- .slide: id="quote" class="modal" data-modal-title="Ideazione" -->
+<!-- .slide: id="quote" class="modal" data-modal-title="Ideazione" data-modal-content=""-->
 
 
 </script>
@@ -223,7 +269,7 @@ Preparing tender applications:
 
 --
 
-<!-- .slide: id="drawing2" class="modal" data-modal-title="Drawing2" -->
+<!-- .slide: id="drawing2" class="modal" data-modal-title="Drawing2" data-modal-content=""-->
 
 <!-- .slide: data-background="#dd5567" -->
 
@@ -235,12 +281,44 @@ Preparing tender applications:
 
 <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
 <script type="text/template">
-<!-- .slide: id="drawing" class="modal" data-modal-title="Drawing" -->
+<!-- .slide: id="drawing" class="modal" data-modal-title="Drawing" data-modal-content=""-->
 
 <!-- .slide: data-background="#dd5567" -->
 
 
 Alternation
+
+</script>
+</section>
+
+<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+<script type="text/template">
+## Credits
+
+#### Commissione Giovani
+
+- Content development:<br>
+<small>Graphics and thoughts *by*</small>
+<small>[@foo](#), [@bar](#), [@baz](#), [@qux](#)</small>
+- Web development:<br>
+<small>Layout and client-side hack *by*</small>
+<small>[@bar](#)</small>
+- Desktop development:<br>
+<small>[SVG2JS][svg2js] desktop converter *by*</small>
+<small>[@bar](#)</small>
+
+<!-- .slide: id="credits" class="modal" data-modal-title="Libraries" data-modal-content="<em>Third party libraries</em><ul><li><a>Reveal.js</a>;</li><li><a>Lazy Line Painter</a>.</li></ul>"-->
+
+
+[svg2js]: #
+
+--
+
+## Libraries
+
+*Third party libraries:*
+- Reveal.js;
+- Lazy Line Painter.
 
 </script>
 </section>
@@ -417,7 +495,7 @@ Alternation
 				}
 			}
 
-			var getModal = function(idCurrent, className, dataModalTitle) {
+			var getModal = function(idCurrent, className, dataModalTitle, dataModalContent) {
 				// Check presence of "modal" classname
 				if (className.indexOf("modal") >= 0) {
 					$(".wrapper-modal").show();
@@ -428,7 +506,10 @@ Alternation
 						$("div.reveal").append(
 							'<div class="overlay overlay-modal visible">\
 								<header><a class="close" href="#"><span class="icon"></span></a></header>\
-								<div class="viewport"><div class="viewport-inner"><p class="title">'+ dataModalTitle +'</p></div></div>\
+								<div class="viewport"><div class="viewport-inner">\
+								<p class="title">'+ dataModalTitle +'</p>\
+								<p>'+ dataModalContent +'</p>\
+								</div></div>\
 							</div>');
 
 						// Link back to the slide
@@ -458,6 +539,7 @@ Alternation
 				var className = event.currentSlide.className;
 				var dataName = event.currentSlide.getAttribute( 'data-name' );
 				var dataModalTitle = event.currentSlide.getAttribute( 'data-modal-title' );
+				var dataModalContent = event.currentSlide.getAttribute( 'data-modal-content' );
 				if( event.previousSlide ) {
 					var idPrevious = event.previousSlide.id;
 				} else {
@@ -469,7 +551,7 @@ Alternation
 					var idNext = false;
 				}
 				getLang(className);
-				getModal(idCurrent, className, dataModalTitle);
+				getModal(idCurrent, className, dataModalTitle, dataModalContent);
 				getAnimation(idCurrent, className, idNext, idPrevious);
 
 			});

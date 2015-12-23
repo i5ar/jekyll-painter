@@ -244,7 +244,7 @@
 				}
 			}
 
-			var getModal = function(idCurrent, className, dataModalTitle) {
+			var getModal = function(idCurrent, className, dataModalTitle, dataModalContent) {
 				// Check presence of "modal" classname
 				if (className.indexOf("modal") >= 0) {
 					$(".wrapper-modal").show();
@@ -255,7 +255,10 @@
 						$("div.reveal").append(
 							'<div class="overlay overlay-modal visible">\
 								<header><a class="close" href="#"><span class="icon"></span></a></header>\
-								<div class="viewport"><div class="viewport-inner"><p class="title">'+ dataModalTitle +'</p></div></div>\
+								<div class="viewport"><div class="viewport-inner">\
+								<p class="title">'+ dataModalTitle +'</p>\
+								<p>'+ dataModalContent +'</p>\
+								</div></div>\
 							</div>');
 
 						// Link back to the slide
@@ -285,6 +288,7 @@
 				var className = event.currentSlide.className;
 				var dataName = event.currentSlide.getAttribute( 'data-name' );
 				var dataModalTitle = event.currentSlide.getAttribute( 'data-modal-title' );
+				var dataModalContent = event.currentSlide.getAttribute( 'data-modal-content' );
 				if( event.previousSlide ) {
 					var idPrevious = event.previousSlide.id;
 				} else {
@@ -296,7 +300,7 @@
 					var idNext = false;
 				}
 				getLang(className);
-				getModal(idCurrent, className, dataModalTitle);
+				getModal(idCurrent, className, dataModalTitle, dataModalContent);
 				getAnimation(idCurrent, className, idNext, idPrevious);
 
 			});

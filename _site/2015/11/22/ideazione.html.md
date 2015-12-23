@@ -8,5 +8,5 @@
 
 [1]:#
 
-<!-- .slide: id="quote" class="modal" data-modal-title="Ideazione" -->
+<!-- .slide: id="quote" class="modal" data-modal-title="Ideazione" data-modal-content=""-->
 
