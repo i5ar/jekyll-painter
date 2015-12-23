@@ -191,68 +191,40 @@ $( document ).ready(function() {
 		</script>
 		<script src="/jekyll-painter/vendor/lazy-line-painter/jquery.lazylinepainter-1.7.0.min.js"></script>
 		<script>
-		// Define graphics in object
-		var graphObj = {
-			"open-source": {
-				"url":			"ajax/open-source.js",
-				// "url": 			"https://rawgit.com/i5ar/19a63be7cad19573afea/raw/315eb032fd49d70e9ab22cc10965466b67216795/drawing.js",
-				"hashName": 	"#open-source",
-				"strokeWidth": 	3.5,
-				"strokeColor": 	"#a23"
-			},
-			"open-source-alt": {
-				"url":			"ajax/open-source-alt.js",
-				// "url": 			"https://rawgit.com/i5ar/0c7d7fd0361bbb45df62/raw/398d3f5cb566c68939d5fa4f69c3310b3f9247d4/drawing2.js",
-				"hashName": 	"#open-source-alt",
-				"strokeWidth": 	74,
-				"strokeColor": 	"#a23"
-			}
-		};
-
 		// https://github.com/camoconnell/lazy-line-painter/
 		(function( $ ){
-			// TODO: Load script in head only once to speed up the timeline
-			// NOTE: See reveal.js load themes
-			var getLine =  function(key, action, url, hashName, strokeWidth, strokeColor){
-		        var $id = $(hashName);
-				// https://api.jquery.com/jquery.ajaxsetup/
-				$.ajaxSetup({
-					cache: true
-				});
-				$.ajax({
-					url: url,
-					dataType: "script"
-				}).done(function(data) {
+			var getLine =  function(key, action){
+		        var $id = $("#"+ key);
 
-					// Featured
-					var speedMultiplier = pathObj[key]['speedMultiplier'];
-					var drawSequential = pathObj[key]['drawSequential'];
+				// Featured
+				var speedMultiplier = pathObj[key]['speedMultiplier'];
+				var drawSequential = pathObj[key]['drawSequential'];
 
-	            	$id.lazylinepainter({
-		                'svgData': pathObj,
+            	$id.lazylinepainter({
+	                'svgData': pathObj,
 
-		                'strokeWidth': strokeWidth,
-						'strokeColor': strokeColor,
-						'strokeCap': 'butt',
-		                'strokeJoin': 'bevel',
-						'strokeOpacity': 1,
-						// 'strokeDash': '5, 10',
+	                // 'strokeWidth': strokeWidth,
+					// 'strokeColor': strokeColor,
+					'strokeCap': 'butt',
+	                'strokeJoin': 'bevel',
+					'strokeOpacity': 1,
+					// 'strokeDash': '5, 10',
 
-						// 'onComplete':
-						// 'onUpdate':
-						// 'onStart':
-						// 'onStrokeStart':
-						// 'onStrokeComplete':
+					// 'onComplete':
+					// 'onUpdate':
+					// 'onStart':
+					// 'onStrokeStart':
+					// 'onStrokeComplete':
 
-						// 'delay':
-						// 'overrideKey':
-						'speedMultiplier': speedMultiplier,
-						'drawSequential': drawSequential,
-						// 'reverse':
-						// 'ease':
-		            });
-					$id.lazylinepainter(action);
-				});
+					// 'delay':
+					// 'overrideKey':
+					'speedMultiplier': speedMultiplier,
+					'drawSequential': drawSequential,
+					// 'reverse':
+					// 'ease':
+	            });
+				$id.lazylinepainter(action);
+
 				$(".paint").click( function(){
 					$id.lazylinepainter("paint");
 				});
@@ -267,29 +239,33 @@ $( document ).ready(function() {
 				});
 		    }
 
-			var setLine = function(key, action) {
-				getLine(key, action,
-					graphObj[key].url,
-					graphObj[key].hashName,
-					graphObj[key].strokeWidth,
-					graphObj[key].strokeColor
-				);
-			}
-
-			var getAnimation = function(idCurrent, className, idNext, idPrevious) {
-				if (graphObj[idCurrent] !== undefined) {
-					// console.log(Object.keys(graphObj));
-					setLine(idCurrent, "paint");
-					$('.controls-anim').show();
-				} else {
-					$('.controls-anim').hide();
-				}
-				if (graphObj[idNext] !== undefined) {
-					setLine(idNext, "erase");
-				}
-				if (graphObj[idPrevious] !== undefined) {
-					setLine(idPrevious, "erase");
-				}
+			var getAnimation = function(idCurrent, className, idPrevious) {
+				// https://api.jquery.com/jquery.ajaxsetup/
+				$.ajaxSetup({
+					cache: true
+				});
+				$.ajax({
+					url: "ajax/"+ idCurrent +".js",
+					dataType: "script",
+					success: function() {
+						getLine(idCurrent, "paint");
+						$('.controls-anim').show();
+					},
+					error: function() {
+						$('.controls-anim').hide();
+						console.log("Don't worry! The 404 Error was supposed to happen. There is any animation in the current slide...");
+					}
+				});
+				$.ajax({
+					url: "ajax/"+ idPrevious +".js",
+					dataType: "script",
+					success: function() {
+						getLine(idPrevious, "erase");
+					},
+					error: function() {
+						console.log("Don't worry! The 404 Error was supposed to happen. There was any animation in the previous slide...");
+					}
+				});
 			}
 
 			var getModal = function(idCurrent, className, dataModalTitle) {
@@ -336,17 +312,11 @@ $( document ).ready(function() {
 				if( event.previousSlide ) {
 					var idPrevious = event.previousSlide.id;
 				} else {
-					var idPrevious = false;
-				}
-				if( event.currentSlide.nextElementSibling ) {
-					var idNext = event.currentSlide.nextElementSibling.id;
-				} else {
-					var idNext = false;
+					var idPrevious = undefined;
 				}
 				getLang(className);
 				getModal(idCurrent, className, dataModalTitle);
-				getAnimation(idCurrent, className, idNext, idPrevious);
-
+				getAnimation(idCurrent, className, idPrevious);
 			});
 
 			// Ready event in first slide
