@@ -116,7 +116,7 @@ $( document ).ready(function() {
 - Paged by [reveal.js][reveal.js];
 - Animated by [Lazy Line Painter][lazy-line-painter].
 
-<!-- .slide: id="" class="lang" data-modal-title="" -->
+<!-- .slide: id="" class="lang" data-modal-title="" data-modal-des="" -->
 
 
 [jekyll]:               https://github.com/jekyll/jekyll
@@ -272,7 +272,7 @@ The `?` key shows all the keys in a modal view.
 
 [1]:https://daringfireball.net/projects/markdown/syntax#span
 
-<!-- .slide: id="quote" class="modal" data-modal-title="Title" -->
+<!-- .slide: id="quote" class="modal" data-modal-title="Title" data-modal-des="" -->
 
 
 </script>
@@ -288,7 +288,7 @@ The `?` key shows all the keys in a modal view.
 
 --
 
-<!-- .slide: id="open-source" class="modal" data-modal-title="Open  Source" -->
+<!-- .slide: id="open-source" class="modal" data-modal-title="Open  Source" data-modal-des="" -->
 
 <!-- .slide: data-background="#dd5567" -->
 
@@ -300,7 +300,8 @@ The `?` key shows all the keys in a modal view.
 
 <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
 <script type="text/template">
-<!-- .slide: id="open-source-alt" class="modal" data-modal-title="Open Source Alternation" -->
+<!-- .slide: id="open-source-alt" class="modal" data-modal-title="Open Source Alternation" data-modal-des="Open Source Alternation Description" -->
+
 
 <!-- .slide: data-background="#dd5567" -->
 
@@ -386,19 +387,19 @@ Alternation
 		// https://github.com/camoconnell/lazy-line-painter/
 		(function( $ ){
 			var getLine =  function(key, action){
-		        var $id = $("#"+ key);
+        var $id = $("#"+ key);
 
 				// Featured
 				var speedMultiplier = pathObj[key]['speedMultiplier'];
 				var drawSequential = pathObj[key]['drawSequential'];
 
-            	$id.lazylinepainter({
-	                'svgData': pathObj,
+      	$id.lazylinepainter({
+            'svgData': pathObj,
 
-	                // 'strokeWidth': strokeWidth,
+	        // 'strokeWidth': strokeWidth,
 					// 'strokeColor': strokeColor,
 					'strokeCap': 'butt',
-	                'strokeJoin': 'bevel',
+	        'strokeJoin': 'bevel',
 					'strokeOpacity': 1,
 					// 'strokeDash': '5, 10',
 
@@ -414,7 +415,7 @@ Alternation
 					'drawSequential': drawSequential,
 					// 'reverse':
 					// 'ease':
-	            });
+	      });
 				$id.lazylinepainter(action);
 
 				$(".paint").click( function(){
@@ -429,7 +430,7 @@ Alternation
 				$(".resume").click( function(){
 					$id.lazylinepainter("resume");
 				});
-		    }
+		  }
 
 			var getAnimation = function(idCurrent, className, idPrevious) {
 				// https://api.jquery.com/jquery.ajaxsetup/
@@ -445,7 +446,7 @@ Alternation
 					},
 					error: function() {
 						$('.controls-anim').hide();
-						console.log("Don't worry! The 404 Error was supposed to happen. There is any animation in the current slide...");
+						console.log("Don't worry! The 404 Error was supposed to happen. There wasn't any animation in the current slide...");
 					}
 				});
 				$.ajax({
@@ -455,12 +456,12 @@ Alternation
 						getLine(idPrevious, "erase");
 					},
 					error: function() {
-						console.log("Don't worry! The 404 Error was supposed to happen. There was any animation in the previous slide...");
+						console.log("Don't worry! The 404 Error was supposed to happen. There wasn't any animation in the previous slide...");
 					}
 				});
 			}
 
-			var getModal = function(idCurrent, className, dataModalTitle) {
+			var getModal = function(idCurrent, className, dataModalTitle, dataModalDescription) {
 				// Check presence of "modal" classname
 				if (className.indexOf("modal") >= 0) {
 					$(".wrapper-modal").show();
@@ -471,7 +472,10 @@ Alternation
 						$("div.reveal").append(
 							'<div class="overlay overlay-modal visible">\
 								<header><a class="close" href="#"><span class="icon"></span></a></header>\
-								<div class="viewport"><div class="viewport-inner"><p class="title">'+ dataModalTitle +'</p></div></div>\
+								<div class="viewport"><div class="viewport-inner">\
+                <p class="title">'+ dataModalTitle +'</p>\
+                <p class="des">'+ dataModalDescription +'</p>\
+                </div></div>\
 							</div>');
 
 						// Link back to the slide
@@ -500,14 +504,15 @@ Alternation
 				var idCurrent = event.currentSlide.id;
 				var className = event.currentSlide.className;
 				var dataName = event.currentSlide.getAttribute( 'data-name' );
-				var dataModalTitle = event.currentSlide.getAttribute( 'data-modal-title' );
+        var dataModalTitle = event.currentSlide.getAttribute( 'data-modal-title' );
+        var dataModalDescription = event.currentSlide.getAttribute( 'data-modal-des' );
 				if( event.previousSlide ) {
 					var idPrevious = event.previousSlide.id;
 				} else {
 					var idPrevious = undefined;
 				}
 				getLang(className);
-				getModal(idCurrent, className, dataModalTitle);
+				getModal(idCurrent, className, dataModalTitle, dataModalDescription);
 				getAnimation(idCurrent, className, idPrevious);
 			});
 

@@ -88,16 +88,17 @@ mark {
 .overlay.overlay-modal .viewport {
   overflow: auto;
   color: #fff; }
-
-.overlay.overlay-modal .viewport .viewport-inner {
-  width: 600px;
-  margin: 0 auto;
-  padding: 60px;
-  text-align: center;
-  letter-spacing: normal; }
-
-.overlay.overlay-modal .viewport .viewport-inner .title {
-  font-size: 20px; }
+  .overlay.overlay-modal .viewport .viewport-inner {
+    width: 600px;
+    margin: 0 auto;
+    padding: 60px;
+    text-align: center;
+    letter-spacing: normal; }
+    .overlay.overlay-modal .viewport .viewport-inner .title {
+      font-size: 20px; }
+    .overlay.overlay-modal .viewport .viewport-inner .des {
+      font-size: 16px;
+      text-align: left; }
 
 /**
  * Bootstrap

@@ -108,7 +108,7 @@ $( document ).ready(function() {
 <script type="text/template">
 # Bienvenida
 
-<!-- .slide: id="" class="lang" data-modal-title="" -->
+<!-- .slide: id="" class="lang" data-modal-title="" data-modal-des="" -->
 
 
 [jekyll]:               https://github.com/jekyll/jekyll
@@ -194,19 +194,19 @@ $( document ).ready(function() {
 		// https://github.com/camoconnell/lazy-line-painter/
 		(function( $ ){
 			var getLine =  function(key, action){
-		        var $id = $("#"+ key);
+        var $id = $("#"+ key);
 
 				// Featured
 				var speedMultiplier = pathObj[key]['speedMultiplier'];
 				var drawSequential = pathObj[key]['drawSequential'];
 
-            	$id.lazylinepainter({
-	                'svgData': pathObj,
+      	$id.lazylinepainter({
+            'svgData': pathObj,
 
-	                // 'strokeWidth': strokeWidth,
+	        // 'strokeWidth': strokeWidth,
 					// 'strokeColor': strokeColor,
 					'strokeCap': 'butt',
-	                'strokeJoin': 'bevel',
+	        'strokeJoin': 'bevel',
 					'strokeOpacity': 1,
 					// 'strokeDash': '5, 10',
 
@@ -222,7 +222,7 @@ $( document ).ready(function() {
 					'drawSequential': drawSequential,
 					// 'reverse':
 					// 'ease':
-	            });
+	      });
 				$id.lazylinepainter(action);
 
 				$(".paint").click( function(){
@@ -237,7 +237,7 @@ $( document ).ready(function() {
 				$(".resume").click( function(){
 					$id.lazylinepainter("resume");
 				});
-		    }
+		  }
 
 			var getAnimation = function(idCurrent, className, idPrevious) {
 				// https://api.jquery.com/jquery.ajaxsetup/
@@ -253,7 +253,7 @@ $( document ).ready(function() {
 					},
 					error: function() {
 						$('.controls-anim').hide();
-						console.log("Don't worry! The 404 Error was supposed to happen. There is any animation in the current slide...");
+						console.log("Don't worry! The 404 Error was supposed to happen. There wasn't any animation in the current slide...");
 					}
 				});
 				$.ajax({
@@ -263,12 +263,12 @@ $( document ).ready(function() {
 						getLine(idPrevious, "erase");
 					},
 					error: function() {
-						console.log("Don't worry! The 404 Error was supposed to happen. There was any animation in the previous slide...");
+						console.log("Don't worry! The 404 Error was supposed to happen. There wasn't any animation in the previous slide...");
 					}
 				});
 			}
 
-			var getModal = function(idCurrent, className, dataModalTitle) {
+			var getModal = function(idCurrent, className, dataModalTitle, dataModalDescription) {
 				// Check presence of "modal" classname
 				if (className.indexOf("modal") >= 0) {
 					$(".wrapper-modal").show();
@@ -279,7 +279,10 @@ $( document ).ready(function() {
 						$("div.reveal").append(
 							'<div class="overlay overlay-modal visible">\
 								<header><a class="close" href="#"><span class="icon"></span></a></header>\
-								<div class="viewport"><div class="viewport-inner"><p class="title">'+ dataModalTitle +'</p></div></div>\
+								<div class="viewport"><div class="viewport-inner">\
+                <p class="title">'+ dataModalTitle +'</p>\
+                <p class="des">'+ dataModalDescription +'</p>\
+                </div></div>\
 							</div>');
 
 						// Link back to the slide
@@ -308,14 +311,15 @@ $( document ).ready(function() {
 				var idCurrent = event.currentSlide.id;
 				var className = event.currentSlide.className;
 				var dataName = event.currentSlide.getAttribute( 'data-name' );
-				var dataModalTitle = event.currentSlide.getAttribute( 'data-modal-title' );
+        var dataModalTitle = event.currentSlide.getAttribute( 'data-modal-title' );
+        var dataModalDescription = event.currentSlide.getAttribute( 'data-modal-des' );
 				if( event.previousSlide ) {
 					var idPrevious = event.previousSlide.id;
 				} else {
 					var idPrevious = undefined;
 				}
 				getLang(className);
-				getModal(idCurrent, className, dataModalTitle);
+				getModal(idCurrent, className, dataModalTitle, dataModalDescription);
 				getAnimation(idCurrent, className, idPrevious);
 			});
 
