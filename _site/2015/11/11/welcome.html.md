@@ -2,13 +2,13 @@
 
 *short for*
 
-## <u>Archi</u>tect
+## <b>Archi</b>tect
 
-#### No more platitudes
-
-> This presentation is intended to show the interesting parts.
+> No more platitudes
 
 **Let's grok!**
+
+<small>Go ahead... Press the `R` key!</small>
 
 <!-- .slide: id="" class="lang" data-modal-title="" data-modal-content=""-->
 

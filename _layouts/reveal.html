@@ -228,16 +228,13 @@
 				);
 			}
 
-			var getAnimation = function(idCurrent, className, idNext, idPrevious) {
+			var getAnimation = function(idCurrent, className, idPrevious) {
 				if (graphObj[idCurrent] !== undefined) {
 					// console.log(Object.keys(graphObj));
 					setLine(idCurrent, "paint");
 					$('.controls-anim').show();
 				} else {
 					$('.controls-anim').hide();
-				}
-				if (graphObj[idNext] !== undefined) {
-					setLine(idNext, "erase");
 				}
 				if (graphObj[idPrevious] !== undefined) {
 					setLine(idPrevious, "erase");
@@ -294,15 +291,9 @@
 				} else {
 					var idPrevious = false;
 				}
-				if( event.currentSlide.nextElementSibling ) {
-					var idNext = event.currentSlide.nextElementSibling.id;
-				} else {
-					var idNext = false;
-				}
 				getLang(className);
 				getModal(idCurrent, className, dataModalTitle, dataModalContent);
-				getAnimation(idCurrent, className, idNext, idPrevious);
-
+				getAnimation(idCurrent, className, idPrevious);
 			});
 
 			// Ready event in first slide

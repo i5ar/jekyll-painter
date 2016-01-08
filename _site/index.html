@@ -110,13 +110,13 @@ $( document ).ready(function() {
 
 *short for*
 
-## <u>Archi</u>tect
+## <b>Archi</b>tect
 
-#### No more platitudes
-
-> This presentation is intended to show the interesting parts.
+> No more platitudes
 
 **Let's grok!**
+
+<small>Go ahead... Press the `R` key!</small>
 
 <!-- .slide: id="" class="lang" data-modal-title="" data-modal-content=""-->
 
@@ -304,7 +304,7 @@ Alternation
 <small>Layout and client-side hack *by*</small>
 <small>[@bar](#)</small>
 - Desktop development:<br>
-<small>[SVG2JS][svg2js] desktop converter *by*</small>
+<small>[SVG2JS][svg2js] converter *by*</small>
 <small>[@bar](#)</small>
 
 <!-- .slide: id="credits" class="modal" data-modal-title="Libraries" data-modal-content="<em>Third party libraries</em><ul><li><a>Reveal.js</a>;</li><li><a>Lazy Line Painter</a>.</li></ul>"-->
@@ -314,11 +314,14 @@ Alternation
 
 --
 
-## Libraries
+> Did we forget something or architects can just do more in your country...
 
-*Third party libraries:*
-- Reveal.js;
-- Lazy Line Painter.
+> Jot down your thoughts!
+
+
+<small>Fork this project on [GitHub][github].</small>
+
+[github]: https://github.com/i5ar/jekyll-painter/tree/r-key
 
 </script>
 </section>
@@ -479,16 +482,13 @@ Alternation
 				);
 			}
 
-			var getAnimation = function(idCurrent, className, idNext, idPrevious) {
+			var getAnimation = function(idCurrent, className, idPrevious) {
 				if (graphObj[idCurrent] !== undefined) {
 					// console.log(Object.keys(graphObj));
 					setLine(idCurrent, "paint");
 					$('.controls-anim').show();
 				} else {
 					$('.controls-anim').hide();
-				}
-				if (graphObj[idNext] !== undefined) {
-					setLine(idNext, "erase");
 				}
 				if (graphObj[idPrevious] !== undefined) {
 					setLine(idPrevious, "erase");
@@ -545,15 +545,9 @@ Alternation
 				} else {
 					var idPrevious = false;
 				}
-				if( event.currentSlide.nextElementSibling ) {
-					var idNext = event.currentSlide.nextElementSibling.id;
-				} else {
-					var idNext = false;
-				}
 				getLang(className);
 				getModal(idCurrent, className, dataModalTitle, dataModalContent);
-				getAnimation(idCurrent, className, idNext, idPrevious);
-
+				getAnimation(idCurrent, className, idPrevious);
 			});
 
 			// Ready event in first slide
