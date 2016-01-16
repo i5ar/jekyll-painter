@@ -34,7 +34,7 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="{{ site.baseurl }}/images/apple-touch-icon-iphone-retina.png" />
 		<link rel="apple-touch-icon" sizes="144x144" href="{{ site.baseurl }}/images/apple-touch-icon-ipad-retina.png" />
 
-		<!-- jQuery -->
+    <!-- jQuery -->
 		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
 		<!-- Printing and PDF exports -->
@@ -167,7 +167,6 @@
 		// https://github.com/camoconnell/lazy-line-painter/
 		(function( $ ){
 
-
 			// TODO: Load script in head only once to speed up the timeline
 			// NOTE: See reveal.js load themes
 			var getLine =  function(action, url, hashName, strokeWidth, strokeColor){
@@ -291,6 +290,23 @@
 				} else {
 					var idPrevious = false;
 				}
+        // Full size canvas
+        if (event.currentSlide.className == "canvas present") {
+            Reveal.configure({
+              width: "100%",
+              height: "100%",
+              margin: 0,
+            });
+        } else {
+          Reveal.configure({
+            width: 960,
+            height: 700,
+          });
+        }
+        // Refresh to clean the canvas
+        if (idPrevious == "canvas") {
+          window.location.reload();
+        }
 				getLang(className);
 				getModal(idCurrent, className, dataModalTitle, dataModalContent);
 				getAnimation(idCurrent, className, idPrevious);
@@ -304,5 +320,94 @@
 
 		})( jQuery );
 		</script>
+
+
+
+
+
+    <!-- p5 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.21/p5.min.js"></script>
+    <script type="text/javascript">
+
+    var vertices = [];
+
+    function setup() {
+
+      var canvas = createCanvas(windowWidth, windowHeight);
+
+      canvas.parent('canvas');
+
+      canvas.mousePressed(addPoint);
+    }
+
+    function addPoint() {
+      vertices.push(createVector(mouseX, mouseY));
+    }
+
+    function draw() {
+      background("#222");
+      fill(255);
+      text('click to add vertices', 10, 30);
+
+      for (var i = 0; i < vertices.length; i++) {
+
+        if (vertices[i].x % 5 == 0) {
+          // Skyscraper
+          rect(vertices[i].x-15, vertices[i].y+15, 30, -80);
+        } else if (vertices[i].x % 3 == 0) {
+          // Roundabout
+          ellipse(vertices[i].x, vertices[i].y, 18, 18);
+        } else if (vertices[i].x % 2) { // Just Odd
+          // House
+          beginShape();
+          vertex(vertices[i].x-27.5, vertices[i].y-32.5);
+          vertex(vertices[i].x+0, vertices[i].y-52.5);
+          vertex(vertices[i].x+27.5, vertices[i].y+-32.5);
+          vertex(vertices[i].x+27.5, vertices[i].y+12.5);
+          vertex(vertices[i].x-27.5, vertices[i].y+12.5);
+          endShape(CLOSE);
+        } else { // Just even
+          // House
+          ellipse(vertices[i].x, vertices[i].y, 28, 28);
+
+        }
+
+      }
+
+      var reached = [];
+      var unreached = [];
+      for (var i = 0; i < vertices.length; i++) {
+        unreached.push(vertices[i]);
+      }
+      var start = unreached[0];
+      unreached.splice(0, 1);
+      reached.push(start);
+
+      while (unreached.length > 0) {
+        var record = 100000;
+        var indexR = 0;
+        var indexU = 0;
+        for (var i = 0; i < reached.length; i++) {
+          for (var j = 0; j < unreached.length; j++) {
+            var d = dist(reached[i].x, reached[i].y, unreached[j].x, unreached[j].y);
+            if (d < record) {
+              record = d;
+              indexR = i;
+              indexU = j;
+            }
+          }
+        }
+        stroke(255);
+        line(reached[indexR].x, reached[indexR].y, unreached[indexU].x, unreached[indexU].y);
+        reached.push(unreached[indexU]);
+        unreached.splice(indexU, 1);
+      }
+    }
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight);
+    }
+
+</script>
+
 	</body>
 </html>
