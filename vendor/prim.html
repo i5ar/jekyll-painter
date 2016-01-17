@@ -1,0 +1,101 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.21/p5.min.js"></script>
+  <!-- uncomment lines below to include extra p5 libraries -->
+  <!-- <script language="javascript" src="libraries/p5.dom.js"></script> -->
+  <!--<script language="javascript" src="libraries/p5.sound.js"></script>-->
+  <style> body {padding: 0; margin: 0;} </style>
+</head>
+
+<body>
+  <script language="javascript" type="text/javascript">
+  // Minimum Spanning Tree
+// An implementation of Prim's algorithm
+// Based off of: http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/11-Graph/prim2.html
+
+// TO DO:
+// Make vertex and edge objects
+// Comment and clean up variable names
+// Consider recursion?
+
+var vertices = [];
+
+function setup() {
+  var canvas = createCanvas(windowWidth, windowHeight);
+  canvas.mousePressed(addPoint);
+}
+
+function addPoint() {
+  vertices.push(createVector(mouseX, mouseY));
+  print(vertices[0].x);
+}
+
+function draw() {
+  background(0);
+  fill(255);
+  text('Click to add vertices', 10, 30);
+
+  for (var i = 0; i < vertices.length; i++) {
+
+    if (vertices[i].x % 5 == 0) {
+      // Skyscraper
+      rect(vertices[i].x-15, vertices[i].y+15, 30, -80);
+    } else if (vertices[i].x % 3 == 0) {
+      // Roundabout
+      ellipse(vertices[i].x, vertices[i].y, 18, 18);
+    } else if (vertices[i].x % 2) { // Just Odd
+      // House
+      beginShape();
+      vertex(vertices[i].x-27.5, vertices[i].y-32.5);
+      vertex(vertices[i].x+0, vertices[i].y-52.5);
+      vertex(vertices[i].x+27.5, vertices[i].y+-32.5);
+      vertex(vertices[i].x+27.5, vertices[i].y+12.5);
+      vertex(vertices[i].x-27.5, vertices[i].y+12.5);
+      endShape(CLOSE);
+    } else { // Just even
+      // House
+      ellipse(vertices[i].x, vertices[i].y, 28, 28);
+
+    }
+
+  }
+
+  var reached = [];
+  var unreached = [];
+  for (var i = 0; i < vertices.length; i++) {
+    unreached.push(vertices[i]);
+  }
+  var start = unreached[0];
+  unreached.splice(0, 1);
+  reached.push(start);
+
+  while (unreached.length > 0) {
+    var record = 100000;
+    var indexR = 0;
+    var indexU = 0;
+    for (var i = 0; i < reached.length; i++) {
+      for (var j = 0; j < unreached.length; j++) {
+        var d = dist(reached[i].x, reached[i].y, unreached[j].x, unreached[j].y);
+        if (d < record) {
+          record = d;
+          indexR = i;
+          indexU = j;
+        }
+      }
+    }
+    stroke(255);
+    line(reached[indexR].x, reached[indexR].y, unreached[indexU].x, unreached[indexU].y);
+    reached.push(unreached[indexU]);
+    unreached.splice(indexU, 1);
+  }
+  //noLoop();
+}
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+  
+  </script>
+</body>
+</html>
