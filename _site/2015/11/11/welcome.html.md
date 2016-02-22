@@ -1,9 +1,5 @@
 # R-key
 
-*short for*
-
-## <b>Archi</b>tect
-
 > No more platitudes
 
 **Let's grok!**

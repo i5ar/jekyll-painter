@@ -108,10 +108,6 @@ $( document ).ready(function() {
 <script type="text/template">
 # R-key
 
-*short for*
-
-## <b>Archi</b>tect
-
 > No more platitudes
 
 **Let's grok!**
@@ -120,61 +116,6 @@ $( document ).ready(function() {
 
 <!-- .slide: id="" class="lang" data-modal-title="" data-modal-content=""-->
 
-
-</script>
-</section>
-
-<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
-<script type="text/template">
-## Definition
-
-#### Architétto
-
-<small>[dal lat. architectus, gr. ἀρχι-τέκτων, comp. di ἀρχι- (v. archi-) e τέκτων «costruttore»]</small>
-
-> Chi predispone i progetti per la costruzione di edifici e di opere d’architettura in genere, <span>e ne dirige e amministra l’esecuzione;</span><!-- .element: class="fragment" -->
-
-
-> <cite>[3cani][1]</cite><!-- .element: class="fragment" -->
-
-
-[1]:#
-
---
-
-> Another great *definition*!
-<div></div>
-
-> <cite>[4gatti][2]</cite><!-- .element: class="fragment" -->
-
-
-[2]:#
-
-</script>
-</section>
-
-<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
-<script type="text/template">
-## draughtsmen
-
-                                           |
-                                           |
-                                         @i5ar
-                                        #  |  #
-                                       ##     ##
-                                        ##   ##
-                                       #########
-                                       ###   ###
-                                      ###  |  ###
-                                   __###__ | __###__
-                                    ###    |    ###
-                                   ###           ###
-                                  ##               ##
-                                 #                  #
-                                #                    #
-
-Architects are draughtsmen.
-<small>Some of them just need a pencil, some others work around with matrices.</small>
 
 </script>
 </section>
@@ -247,17 +188,17 @@ Architects are allowed to do the math.
 
 <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
 <script type="text/template">
-## Ideazione
+## Form
 
-> L’ idea di un architetto non è mai solo formale. Deve essere al tempo stesso sociale, <span>scientifica e poetica.</span><!-- .element: class="fragment" -->
+> Form follows function that has been misunderstood. <span>Form and function should be one, joined in a spiritual union.</span><!-- .element: class="fragment" -->
 
 
-> <cite>[Renzo Piano][1]</cite><!-- .element: class="fragment" -->
+> <cite>[Frank Lloyd Wright][1]</cite><!-- .element: class="fragment" -->
 
 
 [1]:#
 
-<!-- .slide: id="quote" class="modal" data-modal-title="Ideazione" data-modal-content=""-->
+<!-- .slide: id="quote" class="modal" data-modal-title="Frank Lloyd Wright" data-modal-content="Frank Lloyd Wright was an American architect, interior designer, writer, and educator."-->
 
 
 </script>
@@ -382,7 +323,9 @@ Alternation
 			Reveal.configure({
 				keyboard: {
 					// Go to the next slide when the `Enter` key is pressed
-					13: "next",
+          13: "next",
+          // Go to the next slide when the `R` key is pressed
+          82: "next",
 					// Pause video when `Space` bar is pressed
 					32: function () {
 						// Add `action-video` class to each `video` tag
@@ -615,10 +558,10 @@ Alternation
 
         if (vertices[i].x % 5 == 0) {
           // Skyscraper
-          rect(vertices[i].x-15, vertices[i].y+15, 30, -80);
+          ellipse(vertices[i].x, vertices[i].y, 28, 28);
         } else if (vertices[i].x % 3 == 0) {
           // Roundabout
-          ellipse(vertices[i].x, vertices[i].y, 18, 18);
+          ellipse(vertices[i].x, vertices[i].y, 28, 28);
         } else if (vertices[i].x % 2) { // Just Odd
           // House
           beginShape();
@@ -629,9 +572,7 @@ Alternation
           vertex(vertices[i].x-27.5, vertices[i].y+12.5);
           endShape(CLOSE);
         } else { // Just even
-          // House
           ellipse(vertices[i].x, vertices[i].y, 28, 28);
-
         }
 
       }

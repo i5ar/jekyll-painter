@@ -120,7 +120,9 @@
 			Reveal.configure({
 				keyboard: {
 					// Go to the next slide when the `Enter` key is pressed
-					13: "next",
+          13: "next",
+          // Go to the next slide when the `R` key is pressed
+          82: "next",
 					// Pause video when `Space` bar is pressed
 					32: function () {
 						// Add `action-video` class to each `video` tag
@@ -353,10 +355,10 @@
 
         if (vertices[i].x % 5 == 0) {
           // Skyscraper
-          rect(vertices[i].x-15, vertices[i].y+15, 30, -80);
+          ellipse(vertices[i].x, vertices[i].y, 28, 28);
         } else if (vertices[i].x % 3 == 0) {
           // Roundabout
-          ellipse(vertices[i].x, vertices[i].y, 18, 18);
+          ellipse(vertices[i].x, vertices[i].y, 28, 28);
         } else if (vertices[i].x % 2) { // Just Odd
           // House
           beginShape();
@@ -367,9 +369,7 @@
           vertex(vertices[i].x-27.5, vertices[i].y+12.5);
           endShape(CLOSE);
         } else { // Just even
-          // House
           ellipse(vertices[i].x, vertices[i].y, 28, 28);
-
         }
 
       }
